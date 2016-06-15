@@ -10,7 +10,7 @@
     tools:context="com.vic.MainActivityFragment">
 
     <TextView
-        android:text="Hello World!"
+        android:text="吃hhh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
