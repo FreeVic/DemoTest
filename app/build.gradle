@@ -51,9 +51,6 @@ dependencies {
 
     //--------------------test--------------------------
     testCompile 'junit:junit:4.12'
-    androidTestCompile ('org.testng:testng:6.9.6'){
-        exclude module: 'guava'
-    }
     androidTestCompile 'com.android.support.test:runner:0.4'
     // Set this dependency to use JUnit 4 rules
     androidTestCompile 'com.android.support.test:rules:0.4'
