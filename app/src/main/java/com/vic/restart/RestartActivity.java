@@ -45,7 +45,7 @@ public class RestartActivity extends BaseActivity {
     @OnClick(R.id.btn)
     public void btn() {
         String str = et.getText().toString();
-        if (TextUtils.isEmpty(str))
+        if (!TextUtils.isEmpty(str))
             UIUtil.showToast(str);
     }
 
