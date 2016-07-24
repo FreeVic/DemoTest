@@ -1,6 +1,11 @@
 package com.vic;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +14,20 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.vic.service.DemoService;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ServiceConnection serviceConnection;
+
+    //1.在java代码里面定义c的本地方法。
+    public native String helloFromC();
+    //2.在c代码里面，jni目录实现c方法。
+
+    //4.使用编译好的c代码库
+    static{
+        System.loadLibrary("hello");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +44,25 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+//        t1();
+        System.out.println(helloFromC());
+    }
+
+    void t1(){
+        Intent intent = new Intent(this, DemoService.class);
+//        startService(intent);
+        serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+        };
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -50,5 +87,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(serviceConnection!=null)
+            unbindService(serviceConnection);
+    }
 }
