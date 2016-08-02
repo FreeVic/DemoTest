@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.MyClass;
+import com.vic.utils.UIUtil;
+
 import org.json.JSONObject;
 
 import java.util.Random;
@@ -21,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

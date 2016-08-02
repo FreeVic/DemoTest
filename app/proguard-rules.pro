@@ -15,3 +15,13 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+-keepattributes Annotation
+
+-keep class com.android.**{*;}
+-keep public class * extends android.app.Activity
+-keep class com.vic.base.BaseActivity{
+	public void go2Activity(java.lang.Class);
+}
+
+-keep class com.vic.jsCall.JsCallActivity$Test{*;}

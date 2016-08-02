@@ -1,8 +1,16 @@
 package com.example;
 
 import com.google.gson.Gson;
+import com.pinyinsearch.model.PinyinSearchUnit;
+import com.pinyinsearch.util.QwertyUtil;
 
+import java.io.File;
+import java.lang.annotation.ElementType;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Scanner;
 
 public class MyClass {
     /**
@@ -15,7 +23,55 @@ public class MyClass {
 
     public static void main(String[] args){
         MyClass myClass = new MyClass();
-        myClass.t1();
+//        myClass.t3();
+        myClass.t4();
+    }
+
+    public void loopFile(File file){
+        if(file.isDirectory()){
+            File[] files = file.listFiles();
+            for(File tmpFile:files){
+                if(file.isDirectory()){
+                    loopFile(tmpFile);
+                }else {
+                    isPng(tmpFile);
+                }
+            }
+        }else{
+            isPng(file);
+        }
+
+    }
+
+    public void isPng(File file){
+        String path = file.getAbsolutePath();
+//        if(path.endsWith("png")){
+            String fileType = GetTypeByHead.getFileType(path);
+            if(null==fileType||!fileType.equalsIgnoreCase("png")){
+                System.out.println(path);
+            }
+//        }
+    }
+
+    public void t4(){
+        File file = new File("D:\\log.xml");
+        file.renameTo(new File("D:\\log1111.xml"));
+    }
+
+    public void t3(){
+        File file = new File("C:\\worksapce\\Eclite5006\\AndroidEcLite43\\app\\src\\main\\res");
+        loopFile(file);
+    }
+    
+    
+    public String t2(){
+        long stamp = 4102419661000l;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(stamp);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String str = format.format(calendar.getTime());
+        System.out.println(str);
+        return str;
     }
 
     void t1(){
