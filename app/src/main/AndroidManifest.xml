@@ -14,16 +14,20 @@
         <activity
             android:name=".restart.RestartActivity"
             android:label="@string/app_name"
+            android:configChanges="orientation"
+            android:theme="@style/AppTheme.NoActionBar" >
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".service.DemoService"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".restart.SecondActivity"/>
         <activity android:name=".restart.ThirdActivity"/>
         <activity android:name=".jsCall.JsCallActivity"/>
+        <!--<activity android:name=".restart.RestartActivity"/>-->
     </application>
 
 </manifest>

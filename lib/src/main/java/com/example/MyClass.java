@@ -1,16 +1,11 @@
 package com.example;
 
 import com.google.gson.Gson;
-import com.pinyinsearch.model.PinyinSearchUnit;
-import com.pinyinsearch.util.QwertyUtil;
 
 import java.io.File;
-import java.lang.annotation.ElementType;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Scanner;
 
 public class MyClass {
     /**
