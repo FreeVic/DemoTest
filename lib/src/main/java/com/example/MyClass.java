@@ -6,6 +6,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Stack;
 
 public class MyClass {
     /**
@@ -16,50 +17,126 @@ public class MyClass {
     private AttributeMapBean attributeMap;
     private List<ProductBean> product;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         MyClass myClass = new MyClass();
 //        myClass.t3();
         myClass.t4();
+        System.out.println(reverse1("abcd"));
     }
 
-    public void loopFile(File file){
-        if(file.isDirectory()){
+
+    //--------------------reverse string---------------------
+    public static String reverse1(String s) {
+        int length = s.length();
+        if (length <= 1)
+            return s;
+        String left = s.substring(0, length / 2);
+        String right = s.substring(length / 2, length);
+        return reverse1(right) + reverse1(left);
+    }
+
+    public static String reverse2(String s) {
+        int length = s.length();
+        String reverse = "";
+        for (int i = 0; i < length; i++)
+            reverse = s.charAt(i) + reverse;
+        return reverse;
+    }
+
+    public static String reverse3(String s) {
+        char[] array = s.toCharArray();
+        String reverse = "";
+        for (int i = array.length - 1; i >= 0; i--)
+            reverse += array[i];
+
+        return reverse;
+    }
+
+    public static String reverse4(String s) {
+        return new StringBuffer(s).reverse().toString();
+    }
+
+    public static String reverse5(String orig) {
+        char[] s = orig.toCharArray();
+        int n = s.length - 1;
+        int halfLength = n / 2;
+        for (int i = 0; i <= halfLength; i++) {
+            char temp = s[i];
+            s[i] = s[n - i];
+            s[n - i] = temp;
+        }
+        return new String(s);
+    }
+
+    public static String reverse6(String s) {
+
+        char[] str = s.toCharArray();
+
+        int begin = 0;
+        int end = s.length() - 1;
+
+        while (begin < end) {
+            str[begin] = (char) (str[begin] ^ str[end]);
+            str[end] = (char) (str[begin] ^ str[end]);
+            str[begin] = (char) (str[end] ^ str[begin]);
+            begin++;
+            end--;
+        }
+
+        return new String(str);
+    }
+
+    public static String reverse7(String s) {
+        char[] str = s.toCharArray();
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < str.length; i++)
+            stack.push(str[i]);
+
+        String reversed = "";
+        for (int i = 0; i < str.length; i++)
+            reversed += stack.pop();
+
+        return reversed;
+    }
+
+    public void loopFile(File file) {
+        if (file.isDirectory()) {
             File[] files = file.listFiles();
-            for(File tmpFile:files){
-                if(file.isDirectory()){
+            for (File tmpFile : files) {
+                if (file.isDirectory()) {
                     loopFile(tmpFile);
-                }else {
+                } else {
                     isPng(tmpFile);
                 }
             }
-        }else{
+        } else {
             isPng(file);
         }
 
     }
 
-    public void isPng(File file){
+    public void isPng(File file) {
         String path = file.getAbsolutePath();
 //        if(path.endsWith("png")){
-            String fileType = GetTypeByHead.getFileType(path);
-            if(null==fileType||!fileType.equalsIgnoreCase("png")){
-                System.out.println(path);
-            }
+        String fileType = GetTypeByHead.getFileType(path);
+        if (null == fileType || !fileType.equalsIgnoreCase("png")) {
+            System.out.println(path);
+        }
 //        }
     }
 
-    public void t4(){
+    public void t4() {
         File file = new File("D:\\log.xml");
         file.renameTo(new File("D:\\log1111.xml"));
     }
 
-    public void t3(){
+    public void t3() {
         File file = new File("C:\\worksapce\\Eclite5006\\AndroidEcLite43\\app\\src\\main\\res");
         loopFile(file);
     }
-    
-    
-    public String t2(){
+
+
+    public String t2() {
         long stamp = 4102419661000l;
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(stamp);
@@ -69,7 +146,7 @@ public class MyClass {
         return str;
     }
 
-    void t1(){
+    void t1() {
         String str = "{\"commoditie_quality\":[{\"attribute_value\":\"金属\",\"id\":31,\"definition\":\"commoditie_quality\"," +
                 "\"product_id\":12,\"pro_id\":31,\"pid\":12,\"property\":\"材质\",\"pav_id\":358}]," +
                 "\"commoditie_color\":{\"358\":[{\"attribute_value\":\"银色\",\"id\":32,\"price\":\"26\"," +
