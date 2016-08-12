@@ -50,7 +50,7 @@ public class RestartActivity extends BaseActivity {
         t3();
     }
 
-    public void t5(){
+    public void t5() {
         HashSet<Person> set = new HashSet<>();
         Person p1 = new Person("Jack");
         Person p2 = new Person("Dack");
@@ -72,7 +72,7 @@ public class RestartActivity extends BaseActivity {
     /**
      * 内部类持有外部类引用
      */
-    public void t4(){
+    public void t4() {
         Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
@@ -85,11 +85,10 @@ public class RestartActivity extends BaseActivity {
         runnable2.run();
     }
 
-    public void t2(){
+    public void t2() {
         MyClass myClass = new MyClass();
         UIUtil.showToast(myClass.t2());
     }
-
 
 
     @OnClick(R.id.button)
@@ -106,7 +105,7 @@ public class RestartActivity extends BaseActivity {
 
     // 匹配拼音
 
-    public void t3(){
+    public void t3() {
         List<MyUnit> list = new ArrayList<>();
         MyUnit unit = new MyUnit("蓝天");
         list.add(unit);
@@ -116,16 +115,17 @@ public class RestartActivity extends BaseActivity {
         list.add(new MyUnit("罗盖"));
         list.add(new MyUnit("廖东川"));
 
-        for(MyUnit ps:list){
-            if(QwertyUtil.match(ps.getUnit(),"l")) {
-                System.out.println(ps.getUnit().getBaseData()+"-->"+ps.getUnit().getMatchKeyword());
+        for (MyUnit ps : list) {
+            if (QwertyUtil.match(ps.getUnit(), "l")) {
+                System.out.println(ps.getUnit().getBaseData() + "-->" + ps.getUnit().getMatchKeyword());
             }
         }
     }
 
-    class MyUnit{
+    class MyUnit {
         public PinyinSearchUnit unit;
-        MyUnit(String baseData){
+
+        MyUnit(String baseData) {
             this.unit = new PinyinSearchUnit(baseData);
             PinyinUtil.parse(unit);
         }
@@ -133,14 +133,16 @@ public class RestartActivity extends BaseActivity {
         public PinyinSearchUnit getUnit() {
             return unit;
         }
+
         public void setUnit(PinyinSearchUnit unit) {
             this.unit = unit;
         }
     }
 
-    static class Runnable2 implements Runnable{
+    static class Runnable2 implements Runnable {
 
         public int arg1 = 1;
+
         @Override
         public void run() {
             System.out.println("runnable2");
