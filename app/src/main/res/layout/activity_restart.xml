@@ -4,23 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    >
+>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"/>
+        android:text="New Button"/>
 
-    <EditText android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:id="@+id/et"
-    android:hint="输入内容"/>
-    <Button  android:id="@+id/btn" android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-    android:text="Say hello!"/>
+    <EditText android:id="@+id/et" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="输入内容"/>
+    <Button android:id="@+id/btn" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Say hello!"/>
 
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:id="@+id/tv"
+    <TextView android:id="@+id/tv" android:layout_width="match_parent"
+              android:layout_height="wrap_content"
               android:text="Hello, Peter!"/>
+    <LinearLayout android:layout_width="60dp" android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:background="@drawable/bg" >
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:text="@string/appbar_scrolling_view_behavior"
+                  android:background="@drawable/bg_text"
+        />
+
+    </LinearLayout>
 
 </LinearLayout>
