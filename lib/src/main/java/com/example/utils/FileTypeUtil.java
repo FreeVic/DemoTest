@@ -1,10 +1,10 @@
-package com.example;
+package com.example.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class GetTypeByHead {
+public class FileTypeUtil {
     // 缓存文件头信息-文件头信息
     public static final HashMap<String, String> mFileTypes = new HashMap<String, String>();
     static {

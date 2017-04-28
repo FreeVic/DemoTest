@@ -1,5 +1,6 @@
 package com.vic.restart;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -7,7 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.MyClass;
+import com.example.MainTest;
+import com.github.lzyzsd.randomcolor.RandomColor;
 import com.pinyinsearch.model.PinyinSearchUnit;
 import com.pinyinsearch.util.PinyinUtil;
 import com.pinyinsearch.util.QwertyUtil;
@@ -38,6 +40,8 @@ public class RestartActivity extends BaseActivity {
     Button btn;
     @BindView(R.id.tv)
     TextView tv;
+    @BindView(R.id.tvTest)
+    TextView tvTest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +51,16 @@ public class RestartActivity extends BaseActivity {
 //        t2();
 //        t3();
 //        t4();
-        t3();
+        int statusBarHeight = UIUtil.getStatusBarHeight();
+        System.out.println("status height:"+statusBarHeight);
+    }
+
+    public void delayTest(){
+        int sum = 0;
+        for(int i=0;i<100000;i++){
+            sum+=i;
+            System.out.println(sum);
+        }
     }
 
     public void t5() {
@@ -86,14 +99,17 @@ public class RestartActivity extends BaseActivity {
     }
 
     public void t2() {
-        MyClass myClass = new MyClass();
+        MainTest myClass = new MainTest();
         UIUtil.showToast(myClass.t2());
     }
 
 
     @OnClick(R.id.button)
     public void click() {
-        go2Activity(SecondActivity.class);
+//        go2Activity(SecondActivity.class);
+        GradientDrawable shapeDrawable = (GradientDrawable) tvTest.getBackground();
+        RandomColor randomColor = new RandomColor();
+        shapeDrawable.setColor(randomColor.randomColor());
     }
 
     @OnClick(R.id.btn)
@@ -116,7 +132,7 @@ public class RestartActivity extends BaseActivity {
         list.add(new MyUnit("廖东川"));
 
         for (MyUnit ps : list) {
-            if (QwertyUtil.match(ps.getUnit(), "l")) {
+            if (QwertyUtil.match(ps.getUnit(), "廖")) {
                 System.out.println(ps.getUnit().getBaseData() + "-->" + ps.getUnit().getMatchKeyword());
             }
         }

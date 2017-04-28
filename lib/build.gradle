@@ -3,8 +3,10 @@ apply plugin: 'java'
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.code.gson:gson:2.7'
-    compile files('libs/pinyinsearch.jar')
-    compile files('libs/pinyin4j-2.5.0.jar')
+    // costTime
+    compile 'org.ow2.asm:asm:5.0.3'
+    compile 'org.ow2.asm:asm-commons:5.0.3'
+    compile files('libs/cost-time.jar')
 }
 
 targetCompatibility = '1.7'
