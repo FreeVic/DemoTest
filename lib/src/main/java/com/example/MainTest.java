@@ -2,7 +2,7 @@ package com.example;
 
 import com.example.test.BaseTest;
 import com.example.test.StringReverse;
-import com.example.utils.FileTypeUtll;
+import com.example.utils.FileTypeUtil;
 
 import java.io.File;
 
@@ -31,7 +31,7 @@ public class MainTest {
     public void isPng(File file) {
         String path = file.getAbsolutePath();
 //        if(path.endsWith("png")){
-        String fileType = FileTypeUtll.getFileType(path);
+        String fileType = FileTypeUtil.getFileType(path);
         if (null == fileType || !fileType.equalsIgnoreCase("png")) {
             System.out.println(path);
         }

@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.MainTest;
 import com.github.lzyzsd.randomcolor.RandomColor;
 import com.pinyinsearch.model.PinyinSearchUnit;
 import com.pinyinsearch.util.PinyinUtil;
@@ -16,6 +15,7 @@ import com.pinyinsearch.util.QwertyUtil;
 import com.vic.R;
 import com.vic.base.BaseActivity;
 import com.vic.model.Person;
+import com.vic.test.ActivityTest;
 import com.vic.utils.UIUtil;
 
 import java.util.ArrayList;
@@ -30,7 +30,6 @@ import butterknife.OnClick;
  * Created by Vic on 2016/6/27 0027.
  */
 public class RestartActivity extends BaseActivity {
-
 
     @BindView(R.id.button)
     Button button;
@@ -48,11 +47,11 @@ public class RestartActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restart);
         ButterKnife.bind(this);
-//        t2();
-//        t3();
-//        t4();
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:"+statusBarHeight);
+
+        new ActivityTest().doTest();
+
     }
 
     public void delayTest(){
@@ -96,11 +95,6 @@ public class RestartActivity extends BaseActivity {
         Runnable2 runnable2 = new Runnable2();
         runnable1.run();
         runnable2.run();
-    }
-
-    public void t2() {
-        MainTest myClass = new MainTest();
-        UIUtil.showToast(myClass.t2());
     }
 
 
