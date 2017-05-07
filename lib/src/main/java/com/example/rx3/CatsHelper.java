@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class CatsHelper {
     ApiWrapper apiWrapper;
-    public void saveTheCutestCat(String query, final Callback<Uri> uriCallback){
+    public void saveTheCutestCat(String query, final Callback<String> uriCallback){
         apiWrapper.queryCats(query, new Callback<List<Cat>>() {
             @Override
             public void onResult(List<Cat> cats) {

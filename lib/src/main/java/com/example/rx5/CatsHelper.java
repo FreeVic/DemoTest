@@ -10,10 +10,10 @@ import java.util.List;
  */
 public class CatsHelper {
     ApiWrapper apiWrapper;
-    public AsyncJob<Uri> saveTheCutestCat(final String query){
-        return new AsyncJob<Uri>() {
+    public AsyncJob<String> saveTheCutestCat(final String query){
+        return new AsyncJob<String>() {
             @Override
-            public void start(final Callback<Uri> callback) {
+            public void start(final Callback<String> callback) {
                 apiWrapper.queryCats(query).map(new Func<List<Cat>, Cat>() {
                     @Override
                     public Cat call(List<Cat> cats) {
@@ -22,9 +22,9 @@ public class CatsHelper {
                 }).start(new Callback<Cat>() {
                     @Override
                     public void onResult(Cat cat) {
-                        apiWrapper.store(cat).start(new Callback<Uri>() {
+                        apiWrapper.store(cat).start(new Callback<String>() {
                             @Override
-                            public void onResult(Uri uri) {
+                            public void onResult(String uri) {
                                 callback.onResult(uri);
                             }
 
@@ -49,9 +49,9 @@ public class CatsHelper {
     }
 
     public void save(){
-        saveTheCutestCat("").start(new Callback<Uri>() {
+        saveTheCutestCat("").start(new Callback<String>() {
             @Override
-            public void onResult(Uri uri) {
+            public void onResult(String uri) {
 
             }
 

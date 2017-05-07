@@ -1,7 +1,5 @@
 package com.example.rx6;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -10,7 +8,7 @@ import java.util.List;
  */
 public class CatsHelper {
     ApiWrapper apiWrapper;
-    public AsyncJob<Uri> saveTheCutestCat(final String query){
+    public AsyncJob<String> saveTheCutestCat(final String query){
         AsyncJob<List<Cat>> listAsyncJob = apiWrapper.queryCats(query);
         AsyncJob<Cat> catAsyncJob = listAsyncJob.map(new Func<List<Cat>, Cat>() {
             @Override
@@ -18,9 +16,9 @@ public class CatsHelper {
                 return findCutest(cats);
             }
         });
-        AsyncJob<Uri> uriAsyncJob = catAsyncJob.flatMap(new Func<Cat, AsyncJob<Uri>>() {
+        AsyncJob<String> uriAsyncJob = catAsyncJob.flatMap(new Func<Cat, AsyncJob<String>>() {
             @Override
-            public AsyncJob<Uri> call(Cat cat) {
+            public AsyncJob<String> call(Cat cat) {
                 return apiWrapper.store(cat);
             }
         });
@@ -32,9 +30,9 @@ public class CatsHelper {
     }
 
     public void save(){
-        saveTheCutestCat("").start(new Callback<Uri>() {
+        saveTheCutestCat("").start(new Callback<String>() {
             @Override
-            public void onResult(Uri uri) {
+            public void onResult(String uri) {
 
             }
 

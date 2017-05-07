@@ -1,7 +1,5 @@
 package com.example.rx2;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class CatsHelper {
                 Cat cutest = findCutest(cats);
                 api.store(cutest, new Api.StoreCallback() {
                     @Override
-                    public void onCatStored(Uri uri) {
+                    public void onCatStored(String uri) {
                         // 结果数据
                     }
 

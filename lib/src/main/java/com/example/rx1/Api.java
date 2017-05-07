@@ -1,7 +1,5 @@
 package com.example.rx1;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.List;
 
 /**
@@ -9,5 +7,5 @@ import java.util.List;
  */
 public interface Api {
     public List<Cat> queryCats(String query);
-    public Uri store(Cat cat);
+    public String store(Cat cat);
 }

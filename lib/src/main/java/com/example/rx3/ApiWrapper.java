@@ -1,7 +1,5 @@
 package com.example.rx3;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.List;
 
 /**
@@ -23,10 +21,10 @@ public class ApiWrapper {
         });
     }
 
-    public void store(Cat cat, final Callback<Uri> uriCallback){
+    public void store(Cat cat, final Callback<String> uriCallback){
         api.store(cat, new Api.StoreCallback() {
             @Override
-            public void onCatStored(Uri uri) {
+            public void onCatStored(String uri) {
                 uriCallback.onResult(uri);
             }
 

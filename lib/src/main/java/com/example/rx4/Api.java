@@ -14,10 +14,10 @@ public interface Api {
     }
 
     interface StoreCallback{
-        void onCatStored(Uri uri);
+        void onCatStored(String uri);
         void onStoreFailed(Exception e);
     }
 
     public List<Cat> queryCats(String query, CatsQueryCallback queryCallback);
-    public Uri store(Cat cat, StoreCallback storeCallback);
+    public String store(Cat cat, StoreCallback storeCallback);
 }

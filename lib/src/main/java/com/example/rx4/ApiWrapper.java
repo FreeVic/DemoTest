@@ -30,13 +30,13 @@ public class ApiWrapper {
 
     }
 
-    public AsyncJob<Uri> store(final Cat cat){
-        return new AsyncJob<Uri>() {
+    public AsyncJob<String> store(final Cat cat){
+        return new AsyncJob<String>() {
             @Override
-            public void start(final Callback<Uri> callback) {
+            public void start(final Callback<String> callback) {
                 api.store(cat, new Api.StoreCallback() {
                     @Override
-                    public void onCatStored(Uri uri) {
+                    public void onCatStored(String uri) {
                         callback.onResult(uri);
                     }
 

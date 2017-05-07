@@ -1,7 +1,5 @@
 package com.example.rx4;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -10,17 +8,17 @@ import java.util.List;
  */
 public class CatsHelper {
     ApiWrapper apiWrapper;
-    public AsyncJob<Uri> saveTheCutestCat(final String query){
-       return new AsyncJob<Uri>() {
+    public AsyncJob<String> saveTheCutestCat(final String query){
+       return new AsyncJob<String>() {
            @Override
-           public void start(final Callback<Uri> callback) {
+           public void start(final Callback<String> callback) {
                apiWrapper.queryCats(query).start(new Callback<List<Cat>>() {
                    @Override
                    public void onResult(List<Cat> cats) {
                        Cat cutest = findCutest(cats);
-                       apiWrapper.store(cutest).start(new Callback<Uri>() {
+                       apiWrapper.store(cutest).start(new Callback<String>() {
                            @Override
-                           public void onResult(Uri uri) {
+                           public void onResult(String uri) {
                                callback.onResult(uri);
                            }
 

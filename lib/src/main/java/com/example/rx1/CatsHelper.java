@@ -1,7 +1,5 @@
 package com.example.rx1;
 
-import com.sun.jndi.toolkit.url.Uri;
-
 import java.util.Collections;
 import java.util.List;
 
@@ -10,7 +8,7 @@ import java.util.List;
  */
 public class CatsHelper {
     Api api;
-    public Uri saveTheCutestCat(String query){
+    public String saveTheCutestCat(String query){
         List<Cat> cats = api.queryCats(query);
         Cat cat = findCutest(cats);
         return api.store(cat);
