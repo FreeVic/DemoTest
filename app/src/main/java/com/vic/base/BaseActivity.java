@@ -3,8 +3,6 @@ package com.vic.base;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 
-import com.vic.R;
-
 /**
  * Created by Vic on 2016/6/27 0027.
  */

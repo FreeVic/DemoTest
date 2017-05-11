@@ -9,18 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.lzyzsd.randomcolor.RandomColor;
-import com.pinyinsearch.model.PinyinSearchUnit;
-import com.pinyinsearch.util.PinyinUtil;
-import com.pinyinsearch.util.QwertyUtil;
 import com.vic.R;
 import com.vic.base.BaseActivity;
 import com.vic.model.Person;
-import com.vic.test.ActivityTest;
+import com.vic.applib.test.ActivityTest;
 import com.vic.utils.UIUtil;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,14 +47,6 @@ public class RestartActivity extends BaseActivity {
 
         new ActivityTest().doTest();
 
-    }
-
-    public void delayTest(){
-        int sum = 0;
-        for(int i=0;i<100000;i++){
-            sum+=i;
-            System.out.println(sum);
-        }
     }
 
     public void t5() {
@@ -115,39 +102,7 @@ public class RestartActivity extends BaseActivity {
 
     // 匹配拼音
 
-    public void t3() {
-        List<MyUnit> list = new ArrayList<>();
-        MyUnit unit = new MyUnit("蓝天");
-        list.add(unit);
-        list.add(new MyUnit("张根硕"));
-        list.add(new MyUnit("赵日天"));
-        list.add(new MyUnit("叶良辰"));
-        list.add(new MyUnit("罗盖"));
-        list.add(new MyUnit("廖东川"));
 
-        for (MyUnit ps : list) {
-            if (QwertyUtil.match(ps.getUnit(), "廖")) {
-                System.out.println(ps.getUnit().getBaseData() + "-->" + ps.getUnit().getMatchKeyword());
-            }
-        }
-    }
-
-    class MyUnit {
-        public PinyinSearchUnit unit;
-
-        MyUnit(String baseData) {
-            this.unit = new PinyinSearchUnit(baseData);
-            PinyinUtil.parse(unit);
-        }
-
-        public PinyinSearchUnit getUnit() {
-            return unit;
-        }
-
-        public void setUnit(PinyinSearchUnit unit) {
-            this.unit = unit;
-        }
-    }
 
     static class Runnable2 implements Runnable {
 
