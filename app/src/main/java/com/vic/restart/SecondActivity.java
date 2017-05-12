@@ -50,8 +50,9 @@ public class SecondActivity extends BaseActivity {
     void click() {
         go2Activity(ThirdActivity.class);
     }
+
     @OnClick(R.id.js)
-    void callJS(){
+    void callJS() {
         go2Activity(JsCallActivity.class);
     }
 }

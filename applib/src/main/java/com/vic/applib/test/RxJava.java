@@ -1,7 +1,6 @@
 package com.vic.applib.test;
 
 import android.os.SystemClock;
-import android.util.Log;
 
 import com.vic.lib.rx7.Api;
 import com.vic.lib.rx7.Cat;
@@ -35,6 +34,7 @@ public class RxJava extends BaseTest {
     String TAG = RxJava.class.getSimpleName();
     ApiWrapper apiWrapper = new ApiWrapper();
     ListCompositeDisposable listComposite = new ListCompositeDisposable();
+
     @Override
     protected void doSubTest() {
         testObserable();
@@ -42,7 +42,7 @@ public class RxJava extends BaseTest {
         testObseravle2();
     }
 
-    void saveCutestCat(final String query, final Api.StoreCallback callback){
+    void saveCutestCat(final String query, final Api.StoreCallback callback) {
         apiWrapper.queryCats(query).subscribeOn(Schedulers.io()).flatMap(new Function<List<Cat>, Publisher<Cat>>() {
             @Override
             public Publisher<Cat> apply(@NonNull List<Cat> cats) throws Exception {
@@ -56,25 +56,25 @@ public class RxJava extends BaseTest {
         }).observeOn(Schedulers.io()).subscribe(new Consumer<String>() {
             @Override
             public void accept(@NonNull String s) throws Exception {
-                Log.i(TAG,"th="+Thread.currentThread().getId());
+                LogUtil.d(TAG, "th=" + Thread.currentThread().getId());
                 callback.onCatStored(s);
             }
         });
     }
 
-    void testObserable(){
+    void testObserable() {
         Observable<String> observable = Observable.just("hello", "obserable");
         Disposable subscribe = observable.delay(5, TimeUnit.SECONDS).subscribe(new Consumer<String>() {
             @Override
             public void accept(@NonNull String s) throws Exception {
-                Log.i(TAG, s);
+                LogUtil.d(TAG, s);
             }
         });
         listComposite.add(subscribe);
         listComposite.dispose();
     }
 
-    void testFlowable(){
+    void testFlowable() {
         Flowable<String> just = Flowable.just("hello", "flowable");
         just.subscribe(new Subscriber<String>() {
             @Override
@@ -84,7 +84,7 @@ public class RxJava extends BaseTest {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG,s);
+                LogUtil.d(TAG, s);
             }
 
             @Override
@@ -101,18 +101,18 @@ public class RxJava extends BaseTest {
         just.subscribe(new Consumer<String>() {
             @Override
             public void accept(@NonNull String s) throws Exception {
-                Log.i(TAG,s);
+                LogUtil.d(TAG, s);
             }
         });
         saveCutestCat("hhh", new Api.StoreCallback() {
             @Override
             public void onCatStored(String uri) {
-                Log.i(TAG,"get the result ="+uri);
+                LogUtil.d(TAG, "get the result =" + uri);
             }
 
             @Override
             public void onStoreFailed(Exception e) {
-                Log.i(TAG,"get the result failed ="+e.toString());
+                LogUtil.d(TAG, "get the result failed =" + e.toString());
             }
         });
 
@@ -121,21 +121,21 @@ public class RxJava extends BaseTest {
 
             @Override
             public String run() {
-                Log.i(TAG,"sleep");
+                LogUtil.d(TAG, "sleep");
                 SystemClock.sleep(5000);
-                Log.i(TAG,"wake up");
+                LogUtil.d(TAG, "wake up");
                 return "wake up";
             }
 
             @Override
             public void onUI(String s) {
-                Log.i(TAG,"receive msg : "+s);
+                LogUtil.d(TAG, "receive msg : " + s);
             }
         });
 
     }
 
-    private void testObseravle2(){
+    private void testObseravle2() {
         Flowable.create(new FlowableOnSubscribe<String>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<String> e) throws Exception {
@@ -149,7 +149,7 @@ public class RxJava extends BaseTest {
 
             @Override
             public void onNext(String s) {
-                Log.i(TAG,s);
+                LogUtil.d(TAG, s);
             }
 
             @Override

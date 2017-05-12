@@ -24,8 +24,15 @@
         </activity>
         <service android:name=".service.DemoService"/>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".restart.SecondActivity"/>
-        <activity android:name=".restart.ThirdActivity"/>
+        <activity android:name=".restart.SecondActivity">
+        </activity>
+        <activity android:name=".restart.ThirdActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="www"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".jsCall.JsCallActivity"/>
         <!--<activity android:name=".restart.RestartActivity"/>-->
     </application>

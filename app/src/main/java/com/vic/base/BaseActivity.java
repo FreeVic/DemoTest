@@ -10,8 +10,8 @@ public class BaseActivity extends FragmentActivity {
     /**
      * @param targetActivity
      */
-    public void go2Activity(Class targetActivity){
-        Intent intent = new Intent(this,targetActivity);
+    public void go2Activity(Class targetActivity) {
+        Intent intent = new Intent(this, targetActivity);
         startActivity(intent);
 //        overridePendingTransition(R.anim.push_bottom_in,R.anim.push_up_out);
     }

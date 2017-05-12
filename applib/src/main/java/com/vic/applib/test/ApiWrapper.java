@@ -22,9 +22,10 @@ import io.reactivex.schedulers.Schedulers;
  * Created by Vic on 2017/5/4 0004.
  */
 public class ApiWrapper {
-    String TAG  = ApiWrapper.class.getSimpleName();
+    String TAG = ApiWrapper.class.getSimpleName();
     Api api = new ApiImpl();
-    public Flowable<List<Cat>> queryCats(final String query){
+
+    public Flowable<List<Cat>> queryCats(final String query) {
         return Flowable.create(new FlowableOnSubscribe<List<Cat>>() {
             @Override
             public void subscribe(final @NonNull FlowableEmitter<List<Cat>> publisher) throws Exception {
@@ -46,7 +47,7 @@ public class ApiWrapper {
 
     }
 
-    public Flowable<Cat> findCutest(final List<Cat> list){
+    public Flowable<Cat> findCutest(final List<Cat> list) {
         return Flowable.create(new FlowableOnSubscribe<Cat>() {
             @Override
             public void subscribe(final @NonNull FlowableEmitter<Cat> publisher) throws Exception {
@@ -64,10 +65,10 @@ public class ApiWrapper {
                     }
                 });
             }
-        },BackpressureStrategy.BUFFER);
+        }, BackpressureStrategy.BUFFER);
     }
 
-    public Flowable<String> storeCat(final Cat cat){
+    public Flowable<String> storeCat(final Cat cat) {
         return Flowable.create(new FlowableOnSubscribe<String>() {
             @Override
             public void subscribe(final @NonNull FlowableEmitter<String> publisher) throws Exception {
@@ -86,10 +87,10 @@ public class ApiWrapper {
                     }
                 });
             }
-        },BackpressureStrategy.BUFFER);
+        }, BackpressureStrategy.BUFFER);
     }
 
-    public <T> void runThread(final RxRunnable<T> runnable){
+    public <T> void runThread(final RxRunnable<T> runnable) {
         Flowable.create(new FlowableOnSubscribe<T>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<T> e) throws Exception {
@@ -105,8 +106,8 @@ public class ApiWrapper {
         });
     }
 
-    public void logThread(){
-        Log.i(TAG,"thread="+Thread.currentThread().getId());
+    public void logThread() {
+        Log.i(TAG, "thread=" + Thread.currentThread().getId());
     }
 
 

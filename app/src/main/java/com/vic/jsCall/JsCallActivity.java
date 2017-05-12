@@ -39,8 +39,9 @@ public class JsCallActivity extends BaseActivity {
         webView.loadUrl("file:///android_asset/test.html");
 
     }
+
     @OnClick(R.id.btn)
-    void click(){
+    void click() {
         System.out.println("call JS");
         webView.loadUrl("javascript:javacall()");
     }

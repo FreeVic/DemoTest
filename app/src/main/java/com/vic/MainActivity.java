@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //2.在c代码里面，jni目录实现c方法。
 
     //4.使用编译好的c代码库
-    static{
+    static {
         System.loadLibrary("hello");
     }
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         System.out.println(helloFromC());
     }
 
-    void t1(){
+    void t1() {
         Intent intent = new Intent(this, DemoService.class);
 //        startService(intent);
         serviceConnection = new ServiceConnection() {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(serviceConnection!=null)
+        if (serviceConnection != null)
             unbindService(serviceConnection);
     }
 }

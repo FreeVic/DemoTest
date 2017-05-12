@@ -1,21 +1,25 @@
 package com.vic.restart;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
+import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.lzyzsd.randomcolor.RandomColor;
+import com.vic.DemoApplication;
 import com.vic.R;
-import com.vic.base.BaseActivity;
-import com.vic.model.Person;
 import com.vic.applib.test.ActivityTest;
+import com.vic.base.BaseActivity;
 import com.vic.utils.UIUtil;
-
-import java.util.HashSet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,12 +32,6 @@ public class RestartActivity extends BaseActivity {
 
     @BindView(R.id.button)
     Button button;
-    @BindView(R.id.et)
-    EditText et;
-    @BindView(R.id.btn)
-    Button btn;
-    @BindView(R.id.tv)
-    TextView tv;
     @BindView(R.id.tvTest)
     TextView tvTest;
 
@@ -43,45 +41,59 @@ public class RestartActivity extends BaseActivity {
         setContentView(R.layout.activity_restart);
         ButterKnife.bind(this);
         int statusBarHeight = UIUtil.getStatusBarHeight();
-        System.out.println("status height:"+statusBarHeight);
-
+        System.out.println("status height:" + statusBarHeight);
         new ActivityTest().doTest();
+        interceptHyperLink(tvTest);
 
-    }
-
-    public void t5() {
-        HashSet<Person> set = new HashSet<>();
-        Person p1 = new Person("Jack");
-        Person p2 = new Person("Dack");
-        Person p3 = new Person("Tick");
-
-        set.add(p1);
-        set.add(p2);
-        set.add(p3);
-        System.out.println(set.size());
-
-        p1.setAge(2);
-        set.remove(p1);
-        System.out.println(set.size());
-
-        set.add(p1);
-        System.out.println(set.size());
     }
 
     /**
-     * 内部类持有外部类引用
+     * 拦截超链接跳转
+     *
+     * @param tv
      */
-    public void t4() {
-        Runnable runnable1 = new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("runnable1");
+    private void interceptHyperLink(TextView tv) {
+        tv.setMovementMethod(LinkMovementMethod.getInstance());
+        CharSequence text = tv.getText();
+        if (text instanceof Spannable) {
+            int end = text.length();
+            Spannable spannable = (Spannable) tv.getText();
+            URLSpan[] urlSpans = spannable.getSpans(0, end, URLSpan.class);
+            if (urlSpans.length == 0) {
+                return;
             }
-        };
 
-        Runnable2 runnable2 = new Runnable2();
-        runnable1.run();
-        runnable2.run();
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(text);
+            // 循环遍历并拦截 所有 http:// 开头的链接
+            for (URLSpan uri : urlSpans) {
+                String url = uri.getURL();
+                if (url.indexOf("http") == 0) {
+                    CustomUrlSpan customUrlSpan = new CustomUrlSpan(this, url);
+                    spannableStringBuilder.setSpan(customUrlSpan, spannable.getSpanStart(uri),
+                            spannable.getSpanEnd(uri), Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+                }
+            }
+            tv.setText(spannableStringBuilder);
+        }
+    }
+
+    class CustomUrlSpan extends ClickableSpan {
+
+        private Context context;
+        private String url;
+
+        public CustomUrlSpan(Context context, String url) {
+            this.context = context;
+            this.url = url;
+        }
+
+        @Override
+        public void onClick(View widget) {
+            // 在这里可以做任何自己想要的处理
+            Intent intent = new Intent();
+            intent.setClass(DemoApplication.getInstance(), ThirdActivity.class);
+            DemoApplication.getInstance().startActivity(intent);
+        }
     }
 
 
@@ -93,25 +105,5 @@ public class RestartActivity extends BaseActivity {
         shapeDrawable.setColor(randomColor.randomColor());
     }
 
-    @OnClick(R.id.btn)
-    public void btn() {
-        String str = et.getText().toString();
-        if (!TextUtils.isEmpty(str))
-            UIUtil.showToast(str);
-    }
-
-    // 匹配拼音
-
-
-
-    static class Runnable2 implements Runnable {
-
-        public int arg1 = 1;
-
-        @Override
-        public void run() {
-            System.out.println("runnable2");
-        }
-    }
 
 }

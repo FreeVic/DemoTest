@@ -2,6 +2,7 @@ package com.vic;
 
 import android.app.Application;
 import android.content.Intent;
+
 import com.vic.restart.RestartActivity;
 
 /**
@@ -30,8 +31,10 @@ public class DemoApplication extends Application {
         startActivity(intent);
         android.os.Process.killProcess(android.os.Process.myPid());  //结束进程之前可以把你程序的注销或者退出代码放在这段代码之前
     }
+
     private static DemoApplication instance;
-    public static DemoApplication getInstance(){
+
+    public static DemoApplication getInstance() {
         return instance;
     }
 }

@@ -17,6 +17,7 @@ public class PinYinSearch extends BaseTest {
     protected void doSubTest() {
         testPinYin();
     }
+
     public void testPinYin() {
         List<MyUnit> list = new ArrayList<>();
         MyUnit unit = new MyUnit("蓝天");
@@ -33,6 +34,7 @@ public class PinYinSearch extends BaseTest {
             }
         }
     }
+
     class MyUnit {
         public PinyinSearchUnit unit;
 

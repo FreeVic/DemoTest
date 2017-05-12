@@ -5,41 +5,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 >
-
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"/>
-
-    <EditText android:id="@+id/et" android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:hint="输入内容"/>
-    <Button android:id="@+id/btn" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Say hello!"/>
-
-    <TextView android:id="@+id/tv" android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="Hello, Peter!"/>
-    <LinearLayout android:layout_width="60dp" android:layout_height="wrap_content"
-                  android:layout_marginLeft="10dp"
-                  android:background="@drawable/bg" >
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:text="@string/appbar_scrolling_view_behavior"
-                  android:background="@drawable/bg_text"
-        />
-
-    </LinearLayout>
+        android:text="change background"/>
 
     <TextView
         android:id="@+id/tvTest"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-    android:text="测试背景"
-              android:layout_marginTop="20dp"
-              android:layout_marginLeft="10dp"
-              android:background="@drawable/bg_text"
-              android:padding="4dp"
-    android:textSize="20sp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_text"
+        android:padding="4dp"
+        android:autoLink="web"
+        android:text="https://www.baidu.com,www.csdn.net"
+        android:textSize="20sp"/>
 
 </LinearLayout>

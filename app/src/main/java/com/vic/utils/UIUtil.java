@@ -12,20 +12,21 @@ import java.lang.reflect.Field;
  */
 public class UIUtil {
 
-    public static int getNumber(){
+    public static int getNumber() {
         return 1;
     }
 
-    public static void showToast(String str){
-        if(!TextUtils.isEmpty(str))
-        Toast.makeText(DemoApplication.getInstance(), str, Toast.LENGTH_SHORT).show();
+    public static void showToast(String str) {
+        if (!TextUtils.isEmpty(str))
+            Toast.makeText(DemoApplication.getInstance(), str, Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 获取状态栏高度
+     *
      * @return
      */
-    public static int getStatusBarHeight(){
+    public static int getStatusBarHeight() {
         Class<?> c = null;
         Object obj = null;
         Field field = null;
