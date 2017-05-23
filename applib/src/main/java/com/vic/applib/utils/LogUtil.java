@@ -1,4 +1,4 @@
-package com.vic.applib.test;
+package com.vic.applib.utils;
 
 import android.util.Log;
 

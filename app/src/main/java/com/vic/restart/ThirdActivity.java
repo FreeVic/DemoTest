@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.vic.R;
-import com.vic.base.BaseActivity;
+import com.vic.applib.activity.BaseActivity;
 
 /**
  * Created by Vic on 2016/6/27 0027.

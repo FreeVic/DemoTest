@@ -8,7 +8,7 @@ import android.support.annotation.Nullable;
 import android.widget.Button;
 
 import com.vic.R;
-import com.vic.base.BaseActivity;
+import com.vic.applib.activity.BaseActivity;
 import com.vic.jsCall.JsCallActivity;
 
 import butterknife.BindView;

@@ -15,11 +15,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.lzyzsd.randomcolor.RandomColor;
-import com.vic.DemoApplication;
 import com.vic.R;
+import com.vic.applib.GlobalApplication;
+import com.vic.applib.activity.BaseActivity;
 import com.vic.applib.test.ActivityTest;
-import com.vic.base.BaseActivity;
-import com.vic.utils.UIUtil;
+import com.vic.applib.utils.UIUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,6 +44,8 @@ public class RestartActivity extends BaseActivity {
         System.out.println("status height:" + statusBarHeight);
         new ActivityTest().doTest();
         interceptHyperLink(tvTest);
+        String string = getString(R.string.str_format, "112", null);
+        System.out.println(string);
 
     }
 
@@ -91,8 +93,8 @@ public class RestartActivity extends BaseActivity {
         public void onClick(View widget) {
             // 在这里可以做任何自己想要的处理
             Intent intent = new Intent();
-            intent.setClass(DemoApplication.getInstance(), ThirdActivity.class);
-            DemoApplication.getInstance().startActivity(intent);
+            intent.setClass(GlobalApplication.getApplication(), ThirdActivity.class);
+            context.startActivity(intent);
         }
     }
 

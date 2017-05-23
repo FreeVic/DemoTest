@@ -1,4 +1,4 @@
-package com.vic.base;
+package com.vic.applib.activity;
 
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;

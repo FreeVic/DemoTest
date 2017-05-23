@@ -2,6 +2,7 @@ package com.vic.applib.test;
 
 import android.os.SystemClock;
 
+import com.vic.applib.utils.LogUtil;
 import com.vic.lib.rx7.Api;
 import com.vic.lib.rx7.Cat;
 import com.vic.lib.rx7.RxRunnable;

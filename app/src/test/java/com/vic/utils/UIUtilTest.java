@@ -1,5 +1,7 @@
 package com.vic.utils;
 
+import com.vic.applib.utils.UIUtil;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

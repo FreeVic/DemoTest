@@ -20,7 +20,7 @@
 
 -keep class com.android.**{*;}
 -keep public class * extends android.app.Activity
--keep class com.vic.base.BaseActivity{
+-keep class com.vic.applib.activity.BaseActivity{
 	public void go2Activity(java.lang.Class);
 }
 

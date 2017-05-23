@@ -1,9 +1,9 @@
-package com.vic.utils;
+package com.vic.applib.utils;
 
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.vic.DemoApplication;
+import com.vic.applib.GlobalApplication;
 
 import java.lang.reflect.Field;
 
@@ -18,7 +18,7 @@ public class UIUtil {
 
     public static void showToast(String str) {
         if (!TextUtils.isEmpty(str))
-            Toast.makeText(DemoApplication.getInstance(), str, Toast.LENGTH_SHORT).show();
+            Toast.makeText(GlobalApplication.getApplication(), str, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -36,7 +36,7 @@ public class UIUtil {
             obj = c.newInstance();
             field = c.getField("status_bar_height");
             x = Integer.parseInt(field.get(obj).toString());
-            sbar = DemoApplication.getInstance().getResources().getDimensionPixelSize(x);
+            sbar = GlobalApplication.getApplication().getResources().getDimensionPixelSize(x);
         } catch (Exception e1) {
             e1.printStackTrace();
         }

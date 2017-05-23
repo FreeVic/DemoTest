@@ -9,7 +9,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 
 import com.vic.R;
-import com.vic.base.BaseActivity;
+import com.vic.applib.activity.BaseActivity;
 import com.vic.restart.ThirdActivity;
 
 import butterknife.BindView;
