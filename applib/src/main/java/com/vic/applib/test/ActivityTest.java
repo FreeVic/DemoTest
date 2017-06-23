@@ -1,5 +1,6 @@
 package com.vic.applib.test;
 
+import com.vic.KotLin;
 import com.vic.lib.test.BaseTest;
 
 /**
@@ -7,7 +8,7 @@ import com.vic.lib.test.BaseTest;
  */
 public class ActivityTest {
     public void doTest() {
-        BaseTest test = new RxJava();
+        BaseTest test = new KotLin();
         test.doTest();
     }
 }
