@@ -19,7 +19,7 @@ public class PinYinSearch extends BaseTest {
     }
 
     public void testPinYin() {
-        List<MyUnit> list = new ArrayList<>();
+        List<MyUnit> list = new ArrayList<MyUnit>();
         MyUnit unit = new MyUnit("蓝天");
         list.add(unit);
         list.add(new MyUnit("张根硕"));

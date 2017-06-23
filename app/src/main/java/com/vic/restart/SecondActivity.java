@@ -5,31 +5,33 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.Button;
 
 import com.vic.R;
 import com.vic.applib.activity.BaseActivity;
 import com.vic.jsCall.JsCallActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by Vic on 2016/6/27 0027.
  */
-public class SecondActivity extends BaseActivity {
+public class SecondActivity extends BaseActivity implements View.OnClickListener {
 
-    @BindView(R.id.button)
-    Button button;
-    @BindView(R.id.js)
-    Button js;
+    /**
+     * JS
+     */
+    private Button js;
+    /**
+     * Second Activity
+     */
+    private Button button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        ButterKnife.bind(this);
+        initView();
+
         String url = "http://xiazai.xiazaiba.com/Soft/O/Opera_38.0.2220.29_XiaZaiBa.zip?pcid=82&filename=Opera_38.0.2220" +
                 ".29_XiaZaiBa.zip&downloadtype=xiazaiba_original";
 //        download(url);
@@ -46,13 +48,22 @@ public class SecondActivity extends BaseActivity {
         downloadManager.enqueue(request);
     }
 
-    @OnClick(R.id.button)
-    void click() {
-        go2Activity(ThirdActivity.class);
+    private void initView() {
+        js = (Button) findViewById(R.id.js);
+        js.setOnClickListener(this);
+        button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(this);
     }
 
-    @OnClick(R.id.js)
-    void callJS() {
-        go2Activity(JsCallActivity.class);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.js:
+                go2Activity(JsCallActivity.class);
+                break;
+            case R.id.button:
+                go2Activity(ThirdActivity.class);
+                break;
+        }
     }
 }

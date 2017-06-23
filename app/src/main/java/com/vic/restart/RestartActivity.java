@@ -21,25 +21,22 @@ import com.vic.applib.activity.BaseActivity;
 import com.vic.applib.test.ActivityTest;
 import com.vic.applib.utils.UIUtil;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 /**
  * Created by Vic on 2016/6/27 0027.
  */
 public class RestartActivity extends BaseActivity {
 
-    @BindView(R.id.button)
-    Button button;
-    @BindView(R.id.tvTest)
-    TextView tvTest;
+
+    private Button button;
+    private TextView tvTest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restart);
-        ButterKnife.bind(this);
+        button = (Button) findViewById(R.id.button);
+        tvTest = (TextView) findViewById(R.id.tvTest);
+        button.setOnClickListener(this);
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:" + statusBarHeight);
         new ActivityTest().doTest();
@@ -79,6 +76,17 @@ public class RestartActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button:
+                GradientDrawable shapeDrawable = (GradientDrawable) tvTest.getBackground();
+                RandomColor randomColor = new RandomColor();
+                shapeDrawable.setColor(randomColor.randomColor());
+                break;
+        }
+    }
+
     class CustomUrlSpan extends ClickableSpan {
 
         private Context context;
@@ -97,15 +105,4 @@ public class RestartActivity extends BaseActivity {
             context.startActivity(intent);
         }
     }
-
-
-    @OnClick(R.id.button)
-    public void click() {
-//        go2Activity(SecondActivity.class);
-        GradientDrawable shapeDrawable = (GradientDrawable) tvTest.getBackground();
-        RandomColor randomColor = new RandomColor();
-        shapeDrawable.setColor(randomColor.randomColor());
-    }
-
-
 }

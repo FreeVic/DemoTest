@@ -2,6 +2,7 @@ package com.vic.restart;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.vic.R;
 import com.vic.applib.activity.BaseActivity;
@@ -17,4 +18,8 @@ public class ThirdActivity extends BaseActivity {
         setContentView(R.layout.activity_third);
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }
