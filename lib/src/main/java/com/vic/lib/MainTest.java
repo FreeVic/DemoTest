@@ -1,6 +1,7 @@
 package com.vic.lib;
 
 import com.vic.lib.test.BaseTest;
+import com.vic.lib.test.KotLin;
 import com.vic.lib.test.StringReverse;
 import com.vic.lib.utils.FileTypeUtil;
 
@@ -9,7 +10,7 @@ import java.io.File;
 public class MainTest {
 
     public static void main(String[] args) {
-        BaseTest test = new StringReverse();
+        BaseTest test = new KotLin();
         test.doTest();
     }
 
