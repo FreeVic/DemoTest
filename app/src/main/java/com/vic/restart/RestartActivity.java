@@ -101,7 +101,7 @@ public class RestartActivity extends BaseActivity {
         public void onClick(View widget) {
             // 在这里可以做任何自己想要的处理
             Intent intent = new Intent();
-            intent.setClass(GlobalApplication.getApplication(), ThirdActivity.class);
+            intent.setClass(GlobalApplication.getApplication(), FourActivity.class);
             context.startActivity(intent);
         }
     }

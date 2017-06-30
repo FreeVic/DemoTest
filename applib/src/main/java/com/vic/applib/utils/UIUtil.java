@@ -1,6 +1,7 @@
 package com.vic.applib.utils;
 
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.widget.Toast;
 
 import com.vic.applib.GlobalApplication;
@@ -41,6 +42,11 @@ public class UIUtil {
             e1.printStackTrace();
         }
         return sbar;
+    }
+
+    public static int[] getScreenSize() {
+        DisplayMetrics dm = GlobalApplication.getApplication().getResources().getDisplayMetrics();
+        return new int[]{dm.widthPixels, dm.heightPixels};
     }
 
 }

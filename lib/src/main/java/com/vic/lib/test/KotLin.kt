@@ -7,7 +7,7 @@ class KotLin: BaseTest() {
     override fun doSubTest() {
         val str = "3+7+myNumber=${sum1(3,7)}"
         println(str)
-        sum5()
+        sum4()
     }
 
     // 定义局部变量
@@ -35,7 +35,7 @@ class KotLin: BaseTest() {
     // 可空变量及空值检测
     fun sum4():Unit{
         var str: String? = "test"
-        str = null
+        str = ""
         println(str)
 
         var kotLin:KotLin? = KotLin()
@@ -43,6 +43,16 @@ class KotLin: BaseTest() {
 //        println("kotlin x="+kotLin.x)
         if(kotLin!=null)
             println("kotlin x="+kotLin.x)
+        // 当不为空时执行操作
+        str?.let {
+            println("str is not null")
+        }?:let{
+            println("str is null")
+        }
+        if(str.isNullOrEmpty()) println("str is null") else println("str is not null")
+
+        // 为空和不为空时操作
+        println("kotlin is null ? ${kotLin?.x?:"null 了"}")
     }
 
     // for 循环
@@ -186,6 +196,6 @@ class KotLin: BaseTest() {
         externaldMethod()
     }
 
-
+    // 单例模式
 
 }

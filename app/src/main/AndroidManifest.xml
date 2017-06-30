@@ -34,6 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".jsCall.JsCallActivity"/>
+        <activity android:name=".restart.FourActivity"/>
         <!--<activity android:name=".restart.RestartActivity"/>-->
     </application>
 
