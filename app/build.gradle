@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion rootProject.compileVersion
+    buildToolsVersion rootProject.buildVersion
+
+    defaultConfig {
+        applicationId "com.vic"
+        minSdkVersion rootProject.minVersion
+        targetSdkVersion rootProject.targetVersion
+        versionCode 1
+        versionName "1.0"
+//        ndk {
+//            moduleName "hello"
+////            ldLibs "log", "z", "m"
+////            abiFilters "armeabi", "armeabi-v7a", "x86"
+//        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "2048M"
+        jumboMode = true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        encoding = "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+//    sourceSets.main {
+//        jni.srcDirs 'src/main/java/jni'
+//    }
+
+    // jni flavor
+    productFlavors {
+//        x86 {
+//            ndk {
+//                abiFilter "x86"
+//            }
+//        }
+//        arm {
+//            ndk {
+//                abiFilter "armeabi-v7a"
+//            }
+//        }
+//        mips {
+//            ndk {
+//                abiFilter "mips"
+//            }
+
+//    }
+            packagingOptions {
+                exclude 'META-INF/DEPENDENCIES.txt'
+                exclude 'META-INF/LICENSE.txt'
+                exclude 'META-INF/NOTICE.txt'
+                exclude 'META-INF/NOTICE'
+                exclude 'META-INF/LICENSE'
+                exclude 'META-INF/DEPENDENCIES'
+                exclude 'META-INF/notice.txt'
+                exclude 'META-INF/license.txt'
+                exclude 'META-INF/dependencies.txt'
+                exclude 'META-INF/LGPL2.1'
+                exclude 'META-INF/maven/'
+            }
+        }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':applib')
+}

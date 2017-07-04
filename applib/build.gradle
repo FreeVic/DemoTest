@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion rootProject.compileVersion
+    buildToolsVersion rootProject.buildVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.minVersion
+        targetSdkVersion rootProject.targetVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        encoding = "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':lib')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile 'io.reactivex.rxjava2:rxjava:2.0.9'
+    // generate beautyful color
+    compile 'com.github.lzyzsd.randomcolor:library:1.0.0'
+//    compile 'me.drakeet.multitype:multitype:3.0.0'
+    //adapter for recyclerview
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.2-4'
+    compile 'com.blankj:utilcode:1.6.3' // util
+//    compile 'top.zibin:Luban:1.1.2' // image compress
+}
