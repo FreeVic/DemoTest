@@ -39,7 +39,6 @@ public class RestartActivity extends BaseActivity {
         button.setOnClickListener(this);
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:" + statusBarHeight);
-        new ActivityTest().doTest();
         interceptHyperLink(tvTest);
         String string = getString(R.string.str_format, "112", null);
         System.out.println(string);
@@ -104,5 +103,11 @@ public class RestartActivity extends BaseActivity {
             intent.setClass(GlobalApplication.getApplication(), FourActivity.class);
             context.startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new ActivityTest().doTest();
     }
 }

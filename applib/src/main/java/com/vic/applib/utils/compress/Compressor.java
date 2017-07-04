@@ -2,7 +2,6 @@ package com.vic.applib.utils.compress;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 
 import java.io.File;
 
@@ -41,18 +40,15 @@ public class Compressor {
         return INSTANCE;
     }
 
-    public File compressToFile(File file) {
-        return ImageUtil.compressImage(context, Uri.fromFile(file), maxWidth, maxHeight, compressFormat, bitmapConfig, quality, destinationDirectoryPath);
+
+    public void compressToFile(File file,String expectName,OnCompressListener listener) {
+        ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(expectName),listener);
     }
 
-    public File compressToFile(File file,String expectName) {
-        return ImageUtil.compressImage(context, Uri.fromFile(file), maxWidth, maxHeight, compressFormat, bitmapConfig, quality,
-                destinationDirectoryPath,expectName);
+    private String getDstPath(String expectName) {
+        return destinationDirectoryPath+"/"+expectName;
     }
 
-    public Bitmap compressToBitmap(File file) {
-        return ImageUtil.getScaledBitmap(context, Uri.fromFile(file), maxWidth, maxHeight, bitmapConfig);
-    }
 
     public static class Builder {
         private Compressor compressor;

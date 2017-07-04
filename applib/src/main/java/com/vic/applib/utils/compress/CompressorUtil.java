@@ -3,7 +3,7 @@ package com.vic.applib.utils.compress;
 import android.graphics.Bitmap;
 
 import com.vic.applib.GlobalApplication;
-import com.vic.applib.utils.ConfigInfo;
+import com.vic.applib.utils.ConfigInfoKt;
 import com.vic.applib.utils.UIUtil;
 
 import java.io.File;
@@ -60,42 +60,15 @@ public class CompressorUtil {
                     .setMaxHeight(type.getMaxHeight())
                     .setQuality(type.getQuality())
                     .setCompressFormat(type.getCompressType())
-                    .setDestinationDirectoryPath(ConfigInfo.Config.getPicDir())
+                    .setDestinationDirectoryPath(ConfigInfoKt.getPicDir())
                     .build();
             map.put(type,compressor);
         }
         return compressor;
     }
 
-    public static File compressToFile(File file,CompressType type) {
-        if (null == file || !file.exists())
-            return null;
-        return getCompressor(type).compressToFile(file);
+    public static void compressToFile(File file,String expectName,OnCompressListener listener) {
+        getCompressor(COMPRESS_JPEG).compressToFile(file,expectName,listener);
     }
 
-    public static File compressToFile(File file,CompressType type,String expectName) {
-        if (null == file || !file.exists())
-            return null;
-        return getCompressor(type).compressToFile(file,expectName);
-    }
-
-    public static File compressToFile(File file) {
-        if (null == file || !file.exists())
-            return null;
-        File newFile = getCompressor(COMPRESS_JPEG).compressToFile(file);
-        return newFile;
-    }
-
-    public static File compressToFile(File file,String expectName) {
-        if (null == file || !file.exists())
-            return null;
-        File newFile = getCompressor(COMPRESS_JPEG).compressToFile(file,expectName);
-        return newFile;
-    }
-
-    public static Bitmap compressToBitmap(File file,CompressType type) {
-        if (null == file || !file.exists())
-            return null;
-        return getCompressor(type).compressToBitmap(file);
-    }
 }
