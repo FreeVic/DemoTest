@@ -1,8 +1,6 @@
 package com.vic.applib.utils.compress;
 
-import java.io.File;
-
-public interface OnCompressListener {
+public interface OnCompressListener<T> {
 
   /**
    * Fired when the compression is started, override to handle in your own code
@@ -12,7 +10,7 @@ public interface OnCompressListener {
   /**
    * Fired when a compression returns successfully, override to handle in your own code
    */
-  void onSuccess(File file);
+  void onSuccess(T t);
 
   /**
    * Fired when a compression fails to complete, override to handle in your own code

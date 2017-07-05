@@ -1,5 +1,6 @@
 package com.vic.applib.test
 
+import android.graphics.Bitmap
 import com.vic.applib.utils.LogUtil
 import com.vic.applib.utils.appDir
 import com.vic.applib.utils.compress.CompressorUtil
@@ -13,9 +14,9 @@ import java.io.File
  */
 class CompressTest: BaseTest() {
     override fun doSubTest() {
-        var file = File("$appDir/4.png")
+        var file = File("$appDir/5.jpg")
 
-        class List:OnCompressListener{
+        class List:OnCompressListener<File>{
             override fun onStart() {
                 LogUtil.d("start compress 1")
             }
@@ -28,7 +29,27 @@ class CompressTest: BaseTest() {
             }
 
         }
-        CompressorUtil.compressToFile(file,"test.jpg",List())
+
+        class ListenerBM:OnCompressListener<Bitmap>{
+            override fun onStart() {
+                LogUtil.d("start compress 1")
+            }
+
+            override fun onSuccess(t: Bitmap?) {
+                if(t!=null) {
+                    LogUtil.d("end compress 1")
+                }else{
+                    LogUtil.d("end compress 1 but bitmap is null")
+                }
+
+            }
+
+            override fun onError(e: Throwable?) {
+                LogUtil.d("end compress on error")
+            }
+
+        }
+        CompressorUtil.CompressToBitmap(file,"test.jpg",ListenerBM())
     }
 
 }

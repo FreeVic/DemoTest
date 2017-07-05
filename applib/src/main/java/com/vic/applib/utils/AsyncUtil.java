@@ -4,12 +4,14 @@ import android.support.annotation.NonNull;
 
 import com.vic.lib.rx7.RxRunnable;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -21,13 +23,34 @@ public class AsyncUtil {
         Flowable.create(new FlowableOnSubscribe<T>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<T> e) throws Exception {
-                e.onNext(runnable.run());
-                e.onComplete();
+                T t = runnable.run();
+                if(t!=null) {
+                    e.onNext(t);
+                    e.onComplete();
+                }else{
+                    LogUtil.d("result of Runnable is null");
+                    e.onError(new Exception("result of Runnable is null"));
+                }
             }
-        }, BackpressureStrategy.BUFFER).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<T>() {
+        }, BackpressureStrategy.BUFFER).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<T>() {
             @Override
-            public void accept(@NonNull T t) throws Exception {
+            public void onSubscribe(Subscription s) {
+
+            }
+
+            @Override
+            public void onNext(T t) {
                 runnable.onUI(t);
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                runnable.onError(t);
+            }
+
+            @Override
+            public void onComplete() {
+
             }
         });
     }

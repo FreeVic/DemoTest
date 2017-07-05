@@ -132,6 +132,11 @@ public class RxJava extends BaseTest {
             public void onUI(String s) {
                 LogUtil.d(TAG, "receive msg : " + s);
             }
+
+            @Override
+            public void onError(Throwable error) {
+
+            }
         });
 
     }

@@ -67,8 +67,21 @@ public class CompressorUtil {
         return compressor;
     }
 
-    public static void compressToFile(File file,String expectName,OnCompressListener listener) {
+    public static void compressToFile(File file,String expectName,OnCompressListener<File> listener) {
         getCompressor(COMPRESS_JPEG).compressToFile(file,expectName,listener);
     }
+
+    public static File compressToFile(File file,String expectName){
+        return getCompressor(COMPRESS_JPEG).compressToFile(file,expectName);
+    }
+
+    public static void CompressToBitmap(File file,String expectName,OnCompressListener<Bitmap> listener){
+        getCompressor(COMPRESS_JPEG).compressToBitmap(file,expectName,listener);
+    }
+
+    public static Bitmap CompressToBitmap(File file,String expectName){
+        return getCompressor(COMPRESS_JPEG).compressToBitmap(file,expectName);
+    }
+
 
 }
