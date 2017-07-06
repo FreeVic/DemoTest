@@ -5,6 +5,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 
+import com.vic.applib.utils.LogUtil;
+import com.vic.lib.utils.FileTypeUtil;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -37,7 +40,8 @@ class Engine {
   }
 
   private boolean isJpeg(File photo) {
-    return photo.getAbsolutePath().contains("jpeg") || photo.getAbsolutePath().contains("jpg");
+      String type = FileTypeUtil.getFileType(photo.getAbsolutePath());
+      return "jpg".equals(type);
   }
 
   private int computeSize() {
@@ -94,14 +98,19 @@ class Engine {
   }
 
   File compress() throws Exception {
+      LogUtil.d("compute file info start");
       BitmapFactory.Options options = new BitmapFactory.Options();
       options.inSampleSize = computeSize();
 
       Bitmap tagBitmap = BitmapFactory.decodeFile(srcImg.getAbsolutePath(), options);
+      LogUtil.d("compute file info end");
       ByteArrayOutputStream stream = new ByteArrayOutputStream();
-
+      LogUtil.d("rotat start");
       tagBitmap = rotatingImage(tagBitmap);
+      LogUtil.d("rotat end");
+      LogUtil.d("save file start");
       tagBitmap.compress(Bitmap.CompressFormat.WEBP, 50, stream);
+      LogUtil.d("save file end");
       tagBitmap.recycle();
 
       FileOutputStream fos = new FileOutputStream(tagImg);

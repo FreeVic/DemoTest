@@ -35,7 +35,7 @@ public class AsyncUtil {
         }, BackpressureStrategy.BUFFER).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<T>() {
             @Override
             public void onSubscribe(Subscription s) {
-
+                s.request(Long.MAX_VALUE);
             }
 
             @Override

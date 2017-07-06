@@ -8,7 +8,8 @@ public class FileTypeUtil {
     public static final HashMap<String, String> mFileTypes = new HashMap<String, String>();
     static {
         // images
-        mFileTypes.put("FFD8FF", "jpg");
+        mFileTypes.put("FFD8FFE1", "jpg");
+        mFileTypes.put("FFD8FFE0", "jpg");
         mFileTypes.put("89504E47", "png");
         mFileTypes.put("47494638", "gif");
         mFileTypes.put("49492A00", "tif");
@@ -39,13 +40,12 @@ public class FileTypeUtil {
         mFileTypes.put("75736167", "txt");
     }
 
-
     public static String getFileType(String filePath) {
         return mFileTypes.get(getFileHeader(filePath));
     }
 
 
-    public static String getFileHeader(String filePath) {
+   public static String getFileHeader(String filePath) {
         FileInputStream is = null;
         String value = null;
         try {

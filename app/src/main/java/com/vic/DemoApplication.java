@@ -20,7 +20,7 @@ public class DemoApplication extends Application {
             public void uncaughtException(Thread thread, Throwable ex) {
                 System.out.println("thread:" + thread.getName() + " threadId:" + thread.getId());
                 System.out.println(ex.getCause().getMessage());
-                restartApp();
+//                restartApp();
             }
         });
     }

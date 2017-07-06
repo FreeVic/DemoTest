@@ -14,7 +14,7 @@ import java.io.File
  */
 class CompressTest: BaseTest() {
     override fun doSubTest() {
-        var file = File("$appDir/5.jpg")
+        var file = File("$appDir/6.jpg")
 
         class List:OnCompressListener<File>{
             override fun onStart() {
@@ -49,7 +49,7 @@ class CompressTest: BaseTest() {
             }
 
         }
-        CompressorUtil.CompressToBitmap(file,"test.jpg",ListenerBM())
+        CompressorUtil.compressToFile(file,"testpng.jpg",List())
     }
 
 }
