@@ -3,7 +3,11 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#FFFF">
+    android:background="#FFFFFF">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" android:background="@color/amber100">
 
     <ImageView
         android:layout_width="44dp"
@@ -19,20 +23,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/name"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="2.5dp"
             android:text="名字"
             android:textColor="@color/blue400"
-            android:textSize="6sp"/>
+            android:textSize="16sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/company"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:text="公司"
             android:textColor="@color/blue400"
-            android:includeFontPadding="false"
-            android:textSize="10dp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
-
+    </LinearLayout>
 </LinearLayout>

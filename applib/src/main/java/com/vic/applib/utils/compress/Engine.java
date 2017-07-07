@@ -22,9 +22,10 @@ class Engine {
   private File tagImg;
   private int srcWidth;
   private int srcHeight;
+    private Bitmap.CompressFormat compressType = Bitmap.CompressFormat.JPEG;
 
   Engine(File srcImg, File tagImg) throws IOException {
-    if (isJpeg(srcImg)) {
+    if (setInfo(srcImg)) {
       this.srcExif = new ExifInterface(srcImg.getAbsolutePath());
     }
     this.tagImg = tagImg;
@@ -39,8 +40,11 @@ class Engine {
     this.srcHeight = options.outHeight;
   }
 
-  private boolean isJpeg(File photo) {
+  private boolean setInfo(File photo) {
       String type = FileTypeUtil.getFileType(photo.getAbsolutePath());
+      if("png".equals(type)){
+          compressType = Bitmap.CompressFormat.WEBP;
+      }
       return "jpg".equals(type);
   }
 
@@ -109,7 +113,7 @@ class Engine {
       tagBitmap = rotatingImage(tagBitmap);
       LogUtil.d("rotat end");
       LogUtil.d("save file start");
-      tagBitmap.compress(Bitmap.CompressFormat.WEBP, 50, stream);
+      tagBitmap.compress(getCompressType(), 50, stream);
       LogUtil.d("save file end");
       tagBitmap.recycle();
 
@@ -118,7 +122,6 @@ class Engine {
       fos.flush();
       fos.close();
       stream.close();
-
       return tagImg;
   }
 
@@ -126,4 +129,7 @@ class Engine {
     return BitmapFactory.decodeFile(compress().getAbsolutePath());
   }
 
+    public Bitmap.CompressFormat getCompressType() {
+        return compressType;
+    }
 }

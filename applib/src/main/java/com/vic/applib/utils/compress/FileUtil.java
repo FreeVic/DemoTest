@@ -26,6 +26,7 @@ public class FileUtil {
     static final String FILES_PATH = "Compressor";
     private static final int EOF = -1;
     private static final int DEFAULT_BUFFER_SIZE = 1024 * 4;
+    static final long SMALL_SIZE = 100*1024;
 
     private FileUtil() {
 
@@ -144,5 +145,12 @@ public class FileUtil {
             count += n;
         }
         return count;
+    }
+
+    public static boolean isTooSmall(File file){
+        if(file!=null && file.exists()){
+            return file.length()<=SMALL_SIZE;
+        }
+        return true;
     }
 }

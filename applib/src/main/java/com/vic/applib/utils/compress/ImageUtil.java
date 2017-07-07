@@ -1,6 +1,7 @@
 package com.vic.applib.utils.compress;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.vic.applib.utils.AsyncUtil;
 import com.vic.lib.rx7.RxRunnable;
@@ -20,11 +21,16 @@ public class ImageUtil {
                 try {
                     File srcFile = new File(src);
                     File dstFile = new File(dst);
-                    Engine engine = new Engine(srcFile, dstFile);
                     if(listener!=null)
                         listener.onStart();
-                    Bitmap result = engine.compressToBitmap();
-                    return result;
+                    if(FileUtil.isTooSmall(srcFile)){
+                        return BitmapFactory.decodeFile(srcFile.getAbsolutePath());
+                    }else{
+                        Engine engine = new Engine(srcFile, dstFile);
+                        Bitmap result = engine.compressToBitmap();
+                        return result;
+                    }
+
                 } catch (Exception e) {
                         if(listener!=null)
                             listener.onError(e);
@@ -50,8 +56,13 @@ public class ImageUtil {
         try {
             File srcFile = new File(src);
             File dstFile = new File(dst);
-            Engine engine = new Engine(srcFile, dstFile);
-            return engine.compressToBitmap();
+            if(FileUtil.isTooSmall(srcFile)){
+                return BitmapFactory.decodeFile(srcFile.getAbsolutePath());
+            }else{
+                Engine engine = new Engine(srcFile, dstFile);
+                Bitmap result = engine.compressToBitmap();
+                return result;
+            }
         } catch (Exception e) {
         }
         return null;
@@ -64,10 +75,15 @@ public class ImageUtil {
                 try {
                     File srcFile = new File(src);
                     File dstFile = new File(dst);
-                    Engine engine = new Engine(srcFile, dstFile);
                     if(listener!=null)
                         listener.onStart();
-                    return engine.compress();
+                    if(FileUtil.isTooSmall(srcFile)){
+                        return srcFile;
+                    }else{
+                        Engine engine = new Engine(srcFile, dstFile);
+                        File result = engine.compress();
+                        return result;
+                    }
                 } catch (Exception e) {
                     if(listener!=null)
                         listener.onError(e);
@@ -92,8 +108,13 @@ public class ImageUtil {
         try {
             File srcFile = new File(src);
             File dstFile = new File(dst);
-            Engine engine = new Engine(srcFile, dstFile);
-            return engine.compress();
+            if(FileUtil.isTooSmall(srcFile)){
+                return srcFile;
+            }else{
+                Engine engine = new Engine(srcFile, dstFile);
+                File result = engine.compress();
+                return result;
+            }
         } catch (Exception e) {
         }
         return null;

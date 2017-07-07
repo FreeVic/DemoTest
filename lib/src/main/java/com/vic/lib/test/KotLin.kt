@@ -35,7 +35,6 @@ class KotLin: BaseTest() {
     // 可空变量及空值检测
     fun sum4():Unit{
         var str: String? = "test"
-        str = ""
         println(str)
 
         var kotLin:KotLin? = KotLin()
