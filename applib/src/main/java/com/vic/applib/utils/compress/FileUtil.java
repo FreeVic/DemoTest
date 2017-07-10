@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import static com.blankj.utilcode.util.StringUtils.isSpace;
+
 /**
  * Created on : June 18, 2016
  * Author     : zetbaitsu
@@ -152,5 +154,28 @@ public class FileUtil {
             return file.length()<=SMALL_SIZE;
         }
         return true;
+    }
+
+    /**
+     * 获取全路径中的文件名
+     *
+     * @param file 文件
+     * @return 文件名
+     */
+    public static String getFileName(File file) {
+        if (file == null) return null;
+        return getFileName(file.getPath());
+    }
+
+    /**
+     * 获取全路径中的文件名
+     *
+     * @param filePath 文件路径
+     * @return 文件名
+     */
+    public static String getFileName(String filePath) {
+        if (isSpace(filePath)) return filePath;
+        int lastSep = filePath.lastIndexOf(File.separator);
+        return lastSep == -1 ? filePath : filePath.substring(lastSep + 1);
     }
 }

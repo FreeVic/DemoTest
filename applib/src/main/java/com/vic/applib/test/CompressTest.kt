@@ -3,7 +3,7 @@ package com.vic.applib.test
 import android.graphics.Bitmap
 import com.vic.applib.utils.LogUtil
 import com.vic.applib.utils.appDir
-import com.vic.applib.utils.compress.CompressorUtil
+import com.vic.applib.utils.compress.Compressor
 import com.vic.applib.utils.compress.OnCompressListener
 import com.vic.lib.test.BaseTest
 import java.io.File
@@ -14,7 +14,7 @@ import java.io.File
  */
 class CompressTest: BaseTest() {
     override fun doSubTest() {
-        var file = File("$appDir/7.png")
+        var file = File("$appDir/-123")
 
         class List:OnCompressListener<File>{
             override fun onStart() {
@@ -49,7 +49,7 @@ class CompressTest: BaseTest() {
             }
 
         }
-        CompressorUtil.getInstance().compressToFile(file,"testpng.jpg",List())
+        Compressor.getInstance().compressToFile(file,null,List())
     }
 
 }

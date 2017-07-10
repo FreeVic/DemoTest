@@ -1,62 +1,58 @@
 package com.vic.applib.utils.compress;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
+
+import com.vic.applib.utils.ConfigInfoKt;
 
 import java.io.File;
 
 public class Compressor {
-    private static volatile Compressor INSTANCE;
-    private Context context;
-    //max width and height values of the compressed image is taken as 612x816
+    private static Compressor instance;
     private String destinationDirectoryPath;
-
-    private Compressor(Context context) {
-        this.context = context;
-        destinationDirectoryPath = context.getCacheDir().getPath() + File.pathSeparator + FileUtil.FILES_PATH;
+    private Compressor() {
     }
 
-    public static Compressor getDefault(Context context) {
-        if (INSTANCE == null) {
+    public static Compressor getInstance() {
+        if (instance == null) {
             synchronized (Compressor.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new Compressor(context);
+                if (instance == null) {
+                    instance = new Compressor.Builder().setDestinationDirectoryPath(ConfigInfoKt
+                            .getPicDir()).build();
                 }
             }
         }
-        return INSTANCE;
+        return instance;
     }
 
 
     public void compressToFile(File file,String expectName,OnCompressListener listener) {
-        ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(expectName),listener);
+        ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(file,expectName),listener);
     }
 
     public File compressToFile(File file,String expectName) {
-        return ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(expectName));
+        return ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(file,expectName));
     }
 
     public void compressToBitmap(File file,String expectName,OnCompressListener listener){
-        ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(expectName),listener);
+        ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(file,expectName),listener);
     }
 
     public Bitmap compressToBitmap(File file,String expectName) {
-        return ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(expectName));
+        return ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(file,expectName));
     }
 
-    private String getDstPath(String expectName) {
+    private String getDstPath(File file,String expectName) {
         if(TextUtils.isEmpty(expectName))
-            return destinationDirectoryPath+"/"+System.currentTimeMillis();
+            return destinationDirectoryPath+"/"+FileUtil.getFileName(file);
         return destinationDirectoryPath+"/"+expectName;
     }
-
 
     public static class Builder {
         private Compressor compressor;
 
-        public Builder(Context context) {
-            compressor = new Compressor(context);
+        public Builder() {
+            compressor = new Compressor();
         }
 
         public Builder setDestinationDirectoryPath(String destinationDirectoryPath) {
