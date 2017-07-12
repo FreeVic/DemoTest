@@ -40,4 +40,9 @@ dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.2-4'
     compile 'com.blankj:utilcode:1.6.3' // util
 //    compile 'top.zibin:Luban:1.1.2' // image compress
+    compile 'com.jakewharton.hugo:hugo-runtime:1.2.1' // execute method time
+    compile 'com.jakewharton.hugo:hugo-annotations:1.2.1'
+
+    compile 'com.jakewharton.timber:timber:2.7.1' // log
+
 }

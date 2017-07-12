@@ -21,6 +21,8 @@ import com.vic.applib.activity.BaseActivity;
 import com.vic.applib.test.ActivityTest;
 import com.vic.applib.utils.UIUtil;
 
+import timber.log.Timber;
+
 /**
  * Created by Vic on 2016/6/27 0027.
  */
@@ -109,5 +111,6 @@ public class RestartActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         new ActivityTest().doTest();
+        Timber.i("resume re");
     }
 }
