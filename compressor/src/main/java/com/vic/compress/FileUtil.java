@@ -1,8 +1,9 @@
-package com.vic.applib.utils.compress;
+package com.vic.compress;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -13,8 +14,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import static com.blankj.utilcode.util.StringUtils.isSpace;
 
 /**
  * Created on : June 18, 2016
@@ -178,4 +177,39 @@ public class FileUtil {
         int lastSep = filePath.lastIndexOf(File.separator);
         return lastSep == -1 ? filePath : filePath.substring(lastSep + 1);
     }
+
+    public static String getDefaultDirectory(){
+        String result = "";
+        result = Environment.getExternalStorageDirectory().getAbsolutePath()+"/compressor";
+        File file = new File(result);
+        if(!file.exists()||!file.isDirectory()){
+            file.mkdirs();
+        }
+        return result;
+    }
+
+    public static boolean checkPath(String path){
+        File file = new File(path);
+        if(!file.exists()||!file.isDirectory()){
+            file.mkdirs();
+        }
+        return file.exists()&&file.isDirectory();
+    }
+
+    /**
+     * 判断字符串是否为null或全为空白字符
+     *
+     * @param s 待校验字符串
+     * @return {@code true}: null或全空白字符<br> {@code false}: 不为null且不全空白字符
+     */
+    public static boolean isSpace(String s) {
+        if (s == null) return true;
+        for (int i = 0, len = s.length(); i < len; ++i) {
+            if (!Character.isWhitespace(s.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

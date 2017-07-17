@@ -1,12 +1,9 @@
-package com.vic.applib.utils.compress;
+package com.vic.compress;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
-
-import com.vic.applib.utils.LogUtil;
-import com.vic.lib.utils.FileTypeUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -102,19 +99,19 @@ class Engine {
   }
 
   File compress() throws Exception {
-      LogUtil.d("compute file info start");
+      System.out.println("compute file info start");
       BitmapFactory.Options options = new BitmapFactory.Options();
       options.inSampleSize = computeSize();
 
       Bitmap tagBitmap = BitmapFactory.decodeFile(srcImg.getAbsolutePath(), options);
-      LogUtil.d("compute file info end");
+      System.out.println("compute file info end");
       ByteArrayOutputStream stream = new ByteArrayOutputStream();
-      LogUtil.d("rotat start");
+      System.out.println("rotat start");
       tagBitmap = rotatingImage(tagBitmap);
-      LogUtil.d("rotat end");
-      LogUtil.d("save file start");
+      System.out.println("rotat end");
+      System.out.println("save file start");
       tagBitmap.compress(getCompressType(), 50, stream);
-      LogUtil.d("save file end");
+      System.out.println("save file end");
       tagBitmap.recycle();
 
       FileOutputStream fos = new FileOutputStream(tagImg);

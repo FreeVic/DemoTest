@@ -2,6 +2,9 @@ package com.vic.applib;
 
 import android.app.Application;
 
+import com.vic.applib.utils.ConfigInfoKt;
+import com.vic.compress.Compressor;
+
 import timber.log.Timber;
 
 /**
@@ -20,5 +23,6 @@ public class GlobalApplication {
 
     private static void init() {
         Timber.plant(new Timber.DebugTree());
+        Compressor.initCompressDirectory(ConfigInfoKt.getPicDir());
     }
 }

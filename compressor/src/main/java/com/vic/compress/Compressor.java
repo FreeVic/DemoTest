@@ -1,15 +1,14 @@
-package com.vic.applib.utils.compress;
+package com.vic.compress;
 
 import android.graphics.Bitmap;
 import android.text.TextUtils;
-
-import com.vic.applib.utils.ConfigInfoKt;
 
 import java.io.File;
 
 public class Compressor {
     private static Compressor instance;
     private String destinationDirectoryPath;
+    private static String defaultDestination = FileUtil.getDefaultDirectory();
     private Compressor() {
     }
 
@@ -17,25 +16,21 @@ public class Compressor {
         if (instance == null) {
             synchronized (Compressor.class) {
                 if (instance == null) {
-                    instance = new Compressor.Builder().setDestinationDirectoryPath(ConfigInfoKt
-                            .getPicDir()).build();
+                    instance = new Compressor.Builder().setDestinationDirectoryPath(defaultDestination).build();
                 }
             }
         }
         return instance;
     }
 
-
-    public void compressToFile(File file,String expectName,OnCompressListener listener) {
-        ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(file,expectName),listener);
+    public static void initCompressDirectory(String path){
+        if(FileUtil.checkPath(path)){
+            defaultDestination = path;
+        }
     }
 
     public File compressToFile(File file,String expectName) {
         return ImageUtil.getScaledFile(file.getAbsolutePath(),getDstPath(file,expectName));
-    }
-
-    public void compressToBitmap(File file,String expectName,OnCompressListener listener){
-        ImageUtil.getScaledBitmap(file.getAbsolutePath(),getDstPath(file,expectName),listener);
     }
 
     public Bitmap compressToBitmap(File file,String expectName) {
