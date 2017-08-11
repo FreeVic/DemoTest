@@ -1,12 +1,17 @@
 package com.vic.restart;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.shizhefei.view.largeimage.LargeImageView;
+import com.shizhefei.view.largeimage.factory.InputStreamBitmapDecoderFactory;
 import com.vic.R;
 import com.vic.applib.activity.BaseActivity;
+
+import java.io.IOException;
 
 import hugo.weaving.DebugLog;
 
@@ -19,7 +24,9 @@ public class FourActivity extends BaseActivity {
     private View company;
     private View img;
     private View ll;
-@DebugLog
+    private LinearLayout lll;
+
+    @DebugLog
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +35,7 @@ public class FourActivity extends BaseActivity {
         company = findViewById(R.id.company);
         img = findViewById(R.id.img);
         ll = findViewById(R.id.ll);
+        lll = (LinearLayout) findViewById(R.id.lll);
     test();
     }
 
@@ -54,6 +62,22 @@ public class FourActivity extends BaseActivity {
     }
     @DebugLog
     private void test(){
-        SystemClock.sleep(1000);
+//        LargeImageView largeImageView = (LargeImageView) findViewById(R.id.imageView);
+        LargeImageView largeImageView = new LargeImageView(this);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) largeImageView.getLayoutParams();
+        layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        lll.addView(largeImageView);
+
+//通过文件的方式加载sd卡中的大图
+//        largeImageView.setImage(new FileBitmapDecoderFactory(file));
+
+//通过流的方式加载assets文件夹里面的大图
+        try {
+            largeImageView.setImage(new InputStreamBitmapDecoderFactory(getAssets().open("world.jpg")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

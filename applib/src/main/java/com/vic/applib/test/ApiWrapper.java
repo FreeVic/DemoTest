@@ -94,13 +94,14 @@ public class ApiWrapper {
         Flowable.create(new FlowableOnSubscribe<T>() {
             @Override
             public void subscribe(@NonNull FlowableEmitter<T> e) throws Exception {
-                logThread();
+                logThread("sub");
                 e.onNext(runnable.run());
                 e.onComplete();
             }
         }, BackpressureStrategy.BUFFER).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<T>() {
             @Override
             public void accept(@NonNull T t) throws Exception {
+                logThread("main");
                 runnable.onUI(t);
             }
         });
@@ -108,6 +109,9 @@ public class ApiWrapper {
 
     public void logThread() {
         Log.i(TAG, "thread=" + Thread.currentThread().getId());
+    }
+    public void logThread(String msg) {
+        Log.i(TAG, "thread=" + Thread.currentThread().getId() +" msg="+msg);
     }
 
 

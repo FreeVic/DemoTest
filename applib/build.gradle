@@ -9,6 +9,9 @@ android {
         targetSdkVersion rootProject.targetVersion
         versionCode 1
         versionName "1.0"
+        ndk {
+            abiFilters 'armeabi','x86','armeabi-v7a','arm64-v8a','x86'
+        }
     }
     compileOptions {
         encoding = "UTF-8"
@@ -47,4 +50,7 @@ dependencies {
     compile 'com.jakewharton.timber:timber:2.7.1'
     // log
     compile project(':compressor')
+    compile 'com.zxy.android:tiny:0.0.6'
+    compile 'com.shizhefei:LargeImageView:1.0.9'
+    compile project(':map')
 }

@@ -20,6 +20,8 @@ import io.reactivex.Flowable;
 import io.reactivex.FlowableEmitter;
 import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -35,12 +37,54 @@ public class RxJava extends BaseTest {
     String TAG = RxJava.class.getSimpleName();
     ApiWrapper apiWrapper = new ApiWrapper();
     ListCompositeDisposable listComposite = new ListCompositeDisposable();
-
+    int i = 0;
     @Override
     protected void doSubTest() {
         testObserable();
         testFlowable();
         testObseravle2();
+//        testOOM2();
+    }
+
+    private void testOOM() {
+        while(true) {
+            Observable.create(new ObservableOnSubscribe<String>() {
+                @Override
+                public void subscribe(@NonNull ObservableEmitter<String> e) throws Exception {
+//                    while (true) {
+                        e.onNext(i + "");
+                        i++;
+//                    }
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<String>() {
+                @Override
+                public void accept(@NonNull String s) throws Exception {
+                    System.out.println("onNext i=" + i);
+                }
+            });
+        }
+    }
+
+    private void testOOM2() {
+//        while(true) {
+            Flowable.create(new FlowableOnSubscribe<String>() {
+                @Override
+                public void subscribe(@NonNull FlowableEmitter<String> e) throws Exception {
+                    while (true) {
+                        e.onNext(i + "");
+                        i++;
+//                    }
+                    }
+                }
+            },BackpressureStrategy.ERROR).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers
+                    .mainThread()).subscribe(new Consumer<String>() {
+                @Override
+                public void accept(@NonNull String s) throws Exception {
+                    SystemClock.sleep(10);
+                    System.out.println("onNext i=" + s);
+                }
+            });
+//        }
     }
 
     void saveCutestCat(final String query, final Api.StoreCallback callback) {

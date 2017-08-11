@@ -7,7 +7,7 @@ import com.vic.applib.utils.UIUtil
  */
 class ActivityTest {
     fun doTest():Unit{
-        val test = CompressTest()
+        val test = RxJava()
         test.doTest()
         println("screen size ${UIUtil.getScreenSize()[0]}*${UIUtil.getScreenSize()[1]}")
     }

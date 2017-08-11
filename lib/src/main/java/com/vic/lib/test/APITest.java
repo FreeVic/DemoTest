@@ -1,6 +1,9 @@
 package com.vic.lib.test;
 
+import com.vic.lib.model.Person;
+
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -10,7 +13,7 @@ import java.util.List;
 public class APITest extends BaseTest {
     @Override
     protected void doSubTest() {
-        testInteger();
+        testMap();
     }
 
     public void testInteger(){
@@ -28,5 +31,40 @@ public class APITest extends BaseTest {
         System.out.println((a+b) == c);
         System.out.println(c == d);
 
+    }
+
+    void testList(){
+        ArrayList<Person> list = new ArrayList<>();
+
+        list.add(new Person("1",1));
+        list.add(new Person("2",2));
+        ArrayList<Person> result = new ArrayList<>(list);
+
+        list.add(new Person("3",3));
+
+        System.out.println("list ="+list.size());;
+        System.out.println("result ="+result.size());
+
+        list.get(0).setAge(10);
+        System.out.println("list person:"+list.get(0));
+        System.out.println("result person:"+result.get(0));
+
+    }
+
+    void testMap(){
+        LinkedHashMap<String,Person> list = new LinkedHashMap<>();
+
+        list.put("1",new Person("1",1));
+        list.put("2",new Person("2",2));
+        LinkedHashMap<String,Person> result = new LinkedHashMap<>(list);
+
+        list.put("3",new Person("3",3));
+
+        System.out.println("list ="+list.size());;
+        System.out.println("result ="+result.size());
+
+        list.get("1").setAge(10);
+        System.out.println("list person:"+list.get("1"));
+        System.out.println("result person:"+list.get("1"));
     }
 }
