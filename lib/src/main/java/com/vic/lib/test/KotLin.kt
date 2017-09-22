@@ -1,5 +1,7 @@
 package com.vic.lib.test
 
+import java.util.*
+
 /**
  * Created by Vic on 2017/5/25 0025.
  */
@@ -7,7 +9,7 @@ class KotLin: BaseTest() {
     override fun doSubTest() {
         val str = "3+7+myNumber=${sum1(3,7)}"
         println(str)
-        sum4()
+        sum17()
     }
 
     // 定义局部变量
@@ -58,7 +60,7 @@ class KotLin: BaseTest() {
     fun sum5():Unit{
         var testList = listOf("a","b","c")
         var code:String? = "haha"
-        var map:HashMap<Int,String> = hashMapOf(Pair(1,"one"), Pair(2,"two"),3 to "three")
+        var map: HashMap<Int, String> = hashMapOf(Pair(1,"one"), Pair(2,"two"),3 to "three")
         println("test for each")
         for(item in testList){
             print(" "+item)
@@ -196,5 +198,17 @@ class KotLin: BaseTest() {
     }
 
     // 单例模式
+
+    // 异常
+    fun sum17() {
+        try {
+            print("before try")
+            throw Exception("sample throwable")
+        } catch(e:Throwable){
+            println("cache exception")
+        } finally {
+            println("finally")
+        }
+    }
 
 }

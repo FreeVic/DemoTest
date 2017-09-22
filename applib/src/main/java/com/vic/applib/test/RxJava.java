@@ -2,6 +2,7 @@ package com.vic.applib.test;
 
 import android.os.SystemClock;
 
+import com.vic.applib.utils.ECSntpClient;
 import com.vic.applib.utils.LogUtil;
 import com.vic.lib.rx7.Api;
 import com.vic.lib.rx7.Cat;
@@ -12,6 +13,8 @@ import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -85,6 +88,7 @@ public class RxJava extends BaseTest {
                 }
             });
 //        }
+        getWebTime();
     }
 
     void saveCutestCat(final String query, final Api.StoreCallback callback) {
@@ -209,6 +213,30 @@ public class RxJava extends BaseTest {
 
             @Override
             public void onComplete() {
+
+            }
+        });
+    }
+
+    private void getWebTime(){
+        final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        apiWrapper.runThread(new RxRunnable<Long>() {
+            @Override
+            public Long run() {
+                long start = System.currentTimeMillis();
+                LogUtil.d(TAG,"get time start "+format.format(new Date(start))+" "+start);
+                return new ECSntpClient().getWebTime();
+            }
+
+            @Override
+            public void onUI(Long aLong) {
+                long end = System.currentTimeMillis();
+                LogUtil.d(TAG,"get time end "+format.format(new Date(end))+" "+end);
+                LogUtil.d(TAG,"current time is "+format.format(new Date(aLong))+" "+aLong);
+            }
+
+            @Override
+            public void onError(Throwable error) {
 
             }
         });

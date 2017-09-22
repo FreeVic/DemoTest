@@ -51,6 +51,5 @@ dependencies {
     // log
     compile project(':compressor')
     compile 'com.zxy.android:tiny:0.0.6'
-    compile 'com.shizhefei:LargeImageView:1.0.9'
     compile project(':map')
 }

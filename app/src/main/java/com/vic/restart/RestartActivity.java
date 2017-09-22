@@ -1,10 +1,15 @@
 package com.vic.restart;
 
+import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.method.LinkMovementMethod;
@@ -19,7 +24,14 @@ import com.vic.R;
 import com.vic.applib.GlobalApplication;
 import com.vic.applib.activity.BaseActivity;
 import com.vic.applib.test.ActivityTest;
+import com.vic.applib.utils.ToastUtil;
 import com.vic.applib.utils.UIUtil;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import java.util.TimeZone;
 
 import timber.log.Timber;
 
@@ -79,11 +91,13 @@ public class RestartActivity extends BaseActivity {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.button:
                 GradientDrawable shapeDrawable = (GradientDrawable) tvTest.getBackground();
                 RandomColor randomColor = new RandomColor();
                 shapeDrawable.setColor(randomColor.randomColor());
+                Random random = new Random();
+                ToastUtil.show(String.valueOf(random.nextInt(100)));
                 break;
         }
     }
@@ -112,5 +126,43 @@ public class RestartActivity extends BaseActivity {
         super.onResume();
         new ActivityTest().doTest();
         Timber.i("resume re");
+        calendar();
+    }
+
+    private void calendar() {
+        ContentValues values = new ContentValues();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date beginTime = null;
+        try {
+            beginTime = simpleDateFormat.parse("2017-09-11 10:10:10");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Date endTime = null;
+        try {
+            endTime = simpleDateFormat.parse("2017-09-11 11:11:11");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        values.put(CalendarContract.Events.CALENDAR_ID, 1);
+        values.put(CalendarContract.Events.TITLE, "Check stackoverflow.com");
+        values.put(CalendarContract.Events.DTSTART, beginTime.getTime());
+        values.put(CalendarContract.Events.DTEND, endTime.getTime());
+        values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getID());
+
+        values.put(CalendarContract.Events.CUSTOM_APP_PACKAGE, getPackageName());
+        values.put(CalendarContract.Events.CUSTOM_APP_URI, "myAppointment://1");
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        getContentResolver().insert(CalendarContract.Events.CONTENT_URI, values);
     }
 }
