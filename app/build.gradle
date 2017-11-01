@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.targetVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 //        ndk {
 //            moduleName "hello"
 ////            ldLibs "log", "z", "m"
@@ -16,7 +17,14 @@ android {
 //        }
     }
     buildTypes {
+        debug{
+            buildConfigField "String","example","\"example debug\""
+            minifyEnabled false
+//            applicationIdSuffix ".stage"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
         release {
+            buildConfigField "String","example","\"example release\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -70,9 +78,16 @@ android {
                 exclude 'META-INF/maven/'
             }
         }
+//    javaCompileOptions {
+//        annotationProcessorOptions {
+//            arguments = [ moduleName : project.getName() ]
+//        }
+//    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':applib')
+//    compile 'com.alibaba:arouter-api:1.2.4'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 }

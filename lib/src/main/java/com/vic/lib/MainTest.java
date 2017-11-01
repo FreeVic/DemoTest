@@ -1,17 +1,20 @@
 package com.vic.lib;
 
-import com.vic.lib.test.APITest;
 import com.vic.lib.test.BaseTest;
+import com.vic.lib.test.KotLin;
 import com.vic.lib.utils.FileTypeUtil;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainTest {
 
     public static void main(String[] args) {
-        BaseTest test = new APITest();
+        BaseTest test = new KotLin();
         test.doTest();
-        new MainTest().t4();
+        new MainTest().t7();
     }
 
     public void loopFile(File file) {
@@ -62,4 +65,28 @@ public class MainTest {
         System.out.println(String.valueOf(System.currentTimeMillis()*(-1)));
         System.out.println(String.valueOf(System.currentTimeMillis()*(1)));
     }
+
+    void t6(){
+        System.out.println(FileTypeUtil.getFileType("/Users/zhangshengli/Desktop/222.mp4"));
+        String src = "/Users/zhangshengli/Desktop/4.mp4";
+        String dst = "/Users/zhangshengli/Desktop/444.mp4";
+        try {
+            FileTypeUtil.copyFile(new File(src),new File(dst));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    void t7(){
+        ArrayList<String> list = new ArrayList<>();
+        list.add("b");
+        list.add("a");
+        list.add("c");
+        System.out.println(list);
+        Object copy = list.clone();
+        Collections.sort(list);
+        System.out.println(list);
+        System.out.println(copy);
+    }
+
 }

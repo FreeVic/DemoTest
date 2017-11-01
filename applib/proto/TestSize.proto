@@ -1,0 +1,34 @@
+syntax = "proto2";
+option java_package = "com.vic.applib.proto";
+option java_outer_classname = "TestSize";
+//option optimize_for = LITE_RUNTIME;
+//编译PB，项目根目录执行 protoc --proto_path=applib/proto --java_out=applib/src/main/java applib/proto/TestSize.proto
+message ContactList
+{
+    repeated Contact list = 1;
+}
+
+message Contact
+{
+    optional string f_call = 1;
+    optional string f_classID = 2;
+    optional string f_company = 3;
+    optional string f_create_time = 4;
+    optional string f_crm_id = 5;
+    optional string f_cs_guid = 6;
+    optional uint32 f_del = 7;
+    optional string f_email = 8;
+    optional string f_face = 9;
+    optional string f_friend_id = 10;
+    optional string f_gender = 11;
+    optional string f_mobile = 12;
+    optional uint64 f_modify_time = 13;
+    optional string f_name = 14;
+    optional string f_phone = 15;
+    optional string f_qq = 16;
+    optional uint32 f_qq_id = 17;
+    optional string f_tagids = 18;
+    optional string f_title = 19;
+    optional string f_type = 20;
+    optional string f_user_id = 21;
+}

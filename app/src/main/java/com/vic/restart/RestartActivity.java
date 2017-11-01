@@ -19,7 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.eclite.map.SampleActivity;
 import com.github.lzyzsd.randomcolor.RandomColor;
+import com.vic.BuildConfig;
 import com.vic.R;
 import com.vic.applib.GlobalApplication;
 import com.vic.applib.activity.BaseActivity;
@@ -54,8 +56,7 @@ public class RestartActivity extends BaseActivity {
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:" + statusBarHeight);
         interceptHyperLink(tvTest);
-        String string = getString(R.string.str_format, "112", null);
-        System.out.println(string);
+        System.out.println("buildConfigField="+BuildConfig.example);
 
     }
 
@@ -116,7 +117,7 @@ public class RestartActivity extends BaseActivity {
         public void onClick(View widget) {
             // 在这里可以做任何自己想要的处理
             Intent intent = new Intent();
-            intent.setClass(GlobalApplication.getApplication(), FiveActivity.class);
+            intent.setClass(GlobalApplication.getApplication(), SampleActivity.class);
             context.startActivity(intent);
         }
     }

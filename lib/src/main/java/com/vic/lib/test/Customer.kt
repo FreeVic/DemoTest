@@ -6,6 +6,6 @@ package com.vic.lib.test
 data class Customer(var name: String, var email: String)
 
 // 为KotLin类扩展函数 似乎不能放在Companion Objects中
-fun KotLin.externaldMethod(){
-    println("this is external method")
+infix fun KotLin.externaldMethod(str:String){
+    println("this is external method str=$str")
 }

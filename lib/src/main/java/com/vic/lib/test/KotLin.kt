@@ -1,5 +1,6 @@
 package com.vic.lib.test
 
+import com.vic.lib.utils.StringHelper
 import java.util.*
 
 /**
@@ -9,7 +10,13 @@ class KotLin: BaseTest() {
     override fun doSubTest() {
         val str = "3+7+myNumber=${sum1(3,7)}"
         println(str)
-        sum17()
+        f19()
+    }
+
+    private fun f19() {
+        var a = "type=721+title=可编辑标题+uid=1011985+uname=胜利+time=1508478831"
+        StringHelper.f19(a)
+        StringHelper.f19(a)
     }
 
     // 定义局部变量
@@ -194,7 +201,7 @@ class KotLin: BaseTest() {
     }
     // 函数扩展
     fun sum16(){
-        externaldMethod()
+        externaldMethod("hha")
     }
 
     // 单例模式
@@ -210,5 +217,15 @@ class KotLin: BaseTest() {
             println("finally")
         }
     }
+
+    fun f18(){
+        // 高阶函数返回的是新的集合
+        val list = listOf("b", "c", "d","a")
+        val sorted = list.sorted()
+        println(list)
+        println(sorted)
+    }
+
+
 
 }

@@ -1,7 +1,10 @@
 package com.vic.lib.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -49,6 +52,7 @@ public class FileTypeUtil {
 
             is.read(b, 0, b.length);
             value = bytesToHexString(b);
+            System.out.println("file header="+value);
         } catch (Exception e) {
         } finally {
             if (null != is) {
@@ -91,5 +95,72 @@ public class FileTypeUtil {
             builder.append(hv);
         }
         return builder.toString();
+    }
+
+    public static byte[] hexStringToByte(String hex) {
+        int len = (hex.length() / 2);
+        byte[] result = new byte[len];
+        char[] achar = hex.toCharArray();
+        for (int i = 0; i < len; i++) {
+            int pos = i * 2;
+            result[i] = (byte) (toByte(achar[pos]) << 4 | toByte(achar[pos + 1]));
+        }
+        return result;
+    }
+
+    private static byte toByte(char c) {
+        byte b = (byte) "0123456789ABCDEF".indexOf(c);
+        return b;
+    }
+
+    public static void copyFile(File srcFile, File destFile)throws IOException{
+        if(!srcFile.exists()){
+            throw new IllegalArgumentException("文件:"+srcFile+"不存在");
+        }
+        if(!srcFile.isFile()){
+            throw new IllegalArgumentException(srcFile+"不是文件");
+        }
+        FileInputStream in = new FileInputStream(srcFile);
+        FileOutputStream out = new FileOutputStream(destFile);
+        byte[] buf = new byte[8*1024];
+        int b ;
+        int i = 0;
+        String header =
+        "0000001C667479706D7034320000000069736F6D617663316D703432000159B26D6F6F760000006C6D76686400000000D5B719C9D5B719C900000258000379000001000001000000000000000000000000010000000000000000000000000000000100000000000000000000000000004000000000000000000000000000000000000000000000000000000000000003";
+        byte[] headerBytes = hexStringToByte(header);
+        int read = in.read(buf, 0, 144);
+        out.write(headerBytes,0,144);
+        out.flush();
+        while((b = in.read(buf,0,buf.length))!=-1){
+            out.write(buf,0,b);
+            if(i==0) {
+                System.out.println(bytesToHexString(Arrays.copyOfRange(buf,0,144)));
+                i++;
+            }
+            out.flush();//最好加上
+        }
+
+        System.out.println("--------------------------------------");
+        in.close();
+        out.close();
+    }
+
+
+    /**
+     * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序，和和intToBytes（）配套使用
+     *
+     * @param src
+     *            byte数组
+     * @param offset
+     *            从数组的第offset位开始
+     * @return int数值
+     */
+    public static int bytesToInt(byte[] src, int offset) {
+        int value;
+        value = (int) ((src[offset] & 0xFF)
+                | ((src[offset+1] & 0xFF)<<8)
+                | ((src[offset+2] & 0xFF)<<16)
+                | ((src[offset+3] & 0xFF)<<24));
+        return value;
     }
 }

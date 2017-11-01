@@ -1,7 +1,7 @@
 package com.vic;
 
-import android.app.Application;
 import android.content.Intent;
+import android.support.multidex.MultiDexApplication;
 
 import com.vic.applib.GlobalApplication;
 import com.vic.restart.RestartActivity;
@@ -9,7 +9,7 @@ import com.vic.restart.RestartActivity;
 /**
  * Created by Vic on 2016/6/27 0027.
  */
-public class DemoApplication extends Application {
+public class DemoApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
