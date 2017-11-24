@@ -1,0 +1,246 @@
+{
+    "android_gradle_plugin_version": "2.2.2",
+    "apk_path": "C:\\workSpace\\DemoTest\\app\\build\\outputs\\apk\\app-debug.apk",
+    "apt": {
+        "applib": {
+            "aptArgs": [
+                "-AmoduleName=applib"
+            ],
+            "aptOutput": "C:\\workSpace\\DemoTest\\applib\\build\\generated\\source\\apt\\release",
+            "disableDiscovery": false,
+            "enabled": true,
+            "processor": null,
+            "processorPath": "C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.2.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\24.2.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\io.reactivex.rxjava2\\rxandroid\\2.0.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.github.lzyzsd.randomcolor\\library\\1.0.0\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.blankj\\utilcode\\1.6.3\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.jakewharton.hugo\\hugo-runtime\\1.2.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\DemoTest\\compressor\\unspecified\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.zxy.android\\tiny\\0.0.6\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.alibaba\\arouter-api\\1.2.4\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\DemoTest\\ecmap\\unspecified\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-v4\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-fragment\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-media-compat\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-core-ui\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-core-utils\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\animated-vector-drawable\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-vector-drawable\\25.3.1\\jars\\classes.jar;C:\\workSpace\\DemoTest\\applib\\build\\intermediates\\exploded-aar\\com.android.support\\support-compat\\25.3.1\\jars\\classes.jar;C:\\devTools\\AndroidSdk\\extras\\android\\m2repository\\com\\android\\support\\support-annotations\\25.3.1\\support-annotations-25.3.1.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.amap.api\\3dmap\\5.5.0\\5840dd853fe291d872ac38eb45f3ab08ba7117de\\3dmap-5.5.0.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib-jre7\\1.1.51\\8b5933578dc55f32cfc1a25f1db6371e4161fb8f\\kotlin-stdlib-jre7-1.1.51.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\1.1.51\\e34fe80c9714240525f665113dd3749415515655\\kotlin-stdlib-1.1.51.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.jetbrains\\annotations\\13.0\\919f0dfe192fb4e063e7dacadee7f8bb9a2672a9\\annotations-13.0.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.alibaba\\arouter-annotation\\1.0.4\\1a052775986931f733338255dd73829f0ecd10d\\arouter-annotation-1.0.4.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.jakewharton.hugo\\hugo-annotations\\1.2.1\\b01150795c5cdca1eb7e501bf00f105ff0e31501\\hugo-annotations-1.2.1.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.aspectj\\aspectjrt\\1.8.5\\39a8ff2d1f79267907f5573c090b342b040b9682\\aspectjrt-1.8.5.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\io.reactivex.rxjava2\\rxjava\\2.0.9\\a5aad74623ade11162dd53cdf0645a51b12221a0\\rxjava-2.0.9.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.reactivestreams\\reactive-streams\\1.0.0\\14b8c877d98005ba3941c9257cfe09f6ed0e0d74\\reactive-streams-1.0.0.jar;C:\\workSpace\\DemoTest\\lib\\build\\libs\\lib.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.google.code.gson\\gson\\2.7\\751f548c85fa49f330cecbb1875893f971b33c4e\\gson-2.7.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.jakewharton.timber\\timber\\2.7.1\\8fa5f11686c7a44386b41a6890e655cf2b7d5e70\\timber-2.7.1.jar;C:\\workSpace\\DemoTest\\applib\\libs\\fastjson-1.1.64.android.jar;C:\\workSpace\\DemoTest\\applib\\libs\\pinyin4j-2.5.0.jar;C:\\workSpace\\DemoTest\\applib\\libs\\pinyinsearch.jar;C:\\workSpace\\DemoTest\\applib\\libs\\protobuf-java-3.3.0.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.alibaba\\arouter-compiler\\1.1.4\\e3cf88c5514a57035f3aed7df045050e363b9d8f\\arouter-compiler-1.1.4.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.google.auto.service\\auto-service\\1.0-rc2\\51033a5b8fcf7039159e35b6878f106ccd5fb35f\\auto-service-1.0-rc2.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup\\javapoet\\1.7.0\\4fdcf1fc27c1a8f55d1109df986c923152f07759\\javapoet-1.7.0.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.commons\\commons-lang3\\3.4\\5fe28b9518e58819180a43a850fbc0dd24b7c050\\commons-lang3-3.4.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\org.apache.commons\\commons-collections4\\4.1\\a4cf4688fe1c7e3a63aa636cc96d013af537768e\\commons-collections4-4.1.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.google.auto\\auto-common\\0.3\\4073ab16ab4aceb9a217273da6442166bf51ae16\\auto-common-0.3.jar;C:\\Users\\eruser\\.gradle\\caches\\modules-2\\files-2.1\\com.google.guava\\guava\\18.0\\cce0823396aa693798f8882e64213b1772032b09\\guava-18.0.jar"
+        }
+    },
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": false
+    },
+    "auto_dependency": true,
+    "build_cache_dir": "C:\\workSpace\\DemoTest\\app\\build\\freeline",
+    "build_directory": "C:\\workSpace\\DemoTest\\app\\build",
+    "build_script": "gradlew.bat :app:assembleDebug",
+    "build_script_work_directory": "",
+    "build_tools_directory": "C:\\devTools\\AndroidSdk\\build-tools\\24.0.1",
+    "build_tools_version": "24.0.1",
+    "check_sources_md5": [
+        
+    ],
+    "compile_sdk_directory": "C:\\devTools\\AndroidSdk\\platforms\\android-24",
+    "compile_sdk_version": "android-24",
+    "databinding": [
+        
+    ],
+    "databinding_compiler_jar": "",
+    "databinding_modules": [
+        
+    ],
+    "debug_package": "com.vic",
+    "exclude_dep_res_paths": [
+        
+    ],
+    "extra_dep_res_paths": [
+        
+    ],
+    "freeline_cache_dir": "C:\\workSpace\\DemoTest",
+    "freeline_gradle_plugin_version": "0.8.8",
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "java_home": "C:\\devTools\\jdk1.8",
+    "launcher": "com.vic.restart.RestartActivity",
+    "main_assets_directory": [
+        "C:\\workSpace\\DemoTest\\app\\src\\debug\\assets",
+        "C:\\workSpace\\DemoTest\\app\\src\\main\\assets"
+    ],
+    "main_jniLibs_directory": [
+        "C:\\workSpace\\DemoTest\\app\\src\\debug\\jniLibs",
+        "C:\\workSpace\\DemoTest\\app\\src\\main\\jniLibs"
+    ],
+    "main_jni_directory": [
+        "C:\\workSpace\\DemoTest\\app\\src\\debug\\jni",
+        "C:\\workSpace\\DemoTest\\app\\src\\main\\jni"
+    ],
+    "main_manifest_path": "C:\\workSpace\\DemoTest\\app\\src\\main\\AndroidManifest.xml",
+    "main_project_dir": "app",
+    "main_project_name": "app",
+    "main_r_path": "C:\\workSpace\\DemoTest\\app\\build\\generated\\source\\r\\debug\\R.java",
+    "main_res_directory": [
+        "C:\\workSpace\\DemoTest\\app\\src\\debug\\res",
+        "C:\\workSpace\\DemoTest\\app\\src\\main\\res"
+    ],
+    "main_src_directory": [
+        "C:\\workSpace\\DemoTest\\app\\src\\debug\\java",
+        "C:\\workSpace\\DemoTest\\app\\src\\main\\java"
+    ],
+    "module_dependencies": {
+        "app": [
+            "applib"
+        ],
+        "applib": [
+            "lib",
+            "compressor",
+            "ecmap"
+        ],
+        "compressor": [
+            
+        ],
+        "ecmap": [
+            
+        ],
+        "lib": [
+            
+        ]
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "C:\\workSpace\\DemoTest\\app"
+        },
+        {
+            "name": "applib",
+            "path": "C:\\workSpace\\DemoTest\\applib"
+        },
+        {
+            "name": "lib",
+            "path": "C:\\workSpace\\DemoTest\\lib"
+        },
+        {
+            "name": "compressor",
+            "path": "C:\\workSpace\\DemoTest\\compressor"
+        },
+        {
+            "name": "ecmap",
+            "path": "C:\\workSpace\\DemoTest\\ecmap"
+        }
+    ],
+    "package": "com.vic",
+    "product_flavor": "",
+    "project_source_sets": {
+        "app": {
+            "main_assets_directory": [
+                "C:\\workSpace\\DemoTest\\app\\src\\debug\\assets",
+                "C:\\workSpace\\DemoTest\\app\\src\\main\\assets"
+            ],
+            "main_jniLibs_directory": [
+                "C:\\workSpace\\DemoTest\\app\\src\\debug\\jniLibs",
+                "C:\\workSpace\\DemoTest\\app\\src\\main\\jniLibs"
+            ],
+            "main_jni_directory": [
+                "C:\\workSpace\\DemoTest\\app\\src\\debug\\jni",
+                "C:\\workSpace\\DemoTest\\app\\src\\main\\jni"
+            ],
+            "main_manifest_path": "C:\\workSpace\\DemoTest\\app\\src\\main\\AndroidManifest.xml",
+            "main_res_directory": [
+                "C:\\workSpace\\DemoTest\\app\\src\\debug\\res",
+                "C:\\workSpace\\DemoTest\\app\\src\\main\\res"
+            ],
+            "main_src_directory": [
+                "C:\\workSpace\\DemoTest\\app\\src\\debug\\java",
+                "C:\\workSpace\\DemoTest\\app\\src\\main\\java"
+            ]
+        },
+        "applib": {
+            "main_assets_directory": [
+                "C:\\workSpace\\DemoTest\\applib\\src\\release\\assets",
+                "C:\\workSpace\\DemoTest\\applib\\src\\main\\assets"
+            ],
+            "main_jniLibs_directory": [
+                "C:\\workSpace\\DemoTest\\applib\\src\\release\\jniLibs",
+                "C:\\workSpace\\DemoTest\\applib\\src\\main\\jniLibs"
+            ],
+            "main_jni_directory": [
+                "C:\\workSpace\\DemoTest\\applib\\src\\release\\jni",
+                "C:\\workSpace\\DemoTest\\applib\\src\\main\\jni"
+            ],
+            "main_manifest_path": "C:\\workSpace\\DemoTest\\applib\\src\\main\\AndroidManifest.xml",
+            "main_res_directory": [
+                "C:\\workSpace\\DemoTest\\applib\\src\\release\\res",
+                "C:\\workSpace\\DemoTest\\applib\\src\\main\\res"
+            ],
+            "main_src_directory": [
+                "C:\\workSpace\\DemoTest\\applib\\src\\release\\java",
+                "C:\\workSpace\\DemoTest\\applib\\src\\main\\java"
+            ]
+        },
+        "compressor": {
+            "main_assets_directory": [
+                "C:\\workSpace\\DemoTest\\compressor\\src\\release\\assets",
+                "C:\\workSpace\\DemoTest\\compressor\\src\\main\\assets"
+            ],
+            "main_jniLibs_directory": [
+                "C:\\workSpace\\DemoTest\\compressor\\src\\release\\jniLibs",
+                "C:\\workSpace\\DemoTest\\compressor\\src\\main\\jniLibs"
+            ],
+            "main_jni_directory": [
+                "C:\\workSpace\\DemoTest\\compressor\\src\\release\\jni",
+                "C:\\workSpace\\DemoTest\\compressor\\src\\main\\jni"
+            ],
+            "main_manifest_path": "C:\\workSpace\\DemoTest\\compressor\\src\\main\\AndroidManifest.xml",
+            "main_res_directory": [
+                "C:\\workSpace\\DemoTest\\compressor\\src\\release\\res",
+                "C:\\workSpace\\DemoTest\\compressor\\src\\main\\res"
+            ],
+            "main_src_directory": [
+                "C:\\workSpace\\DemoTest\\compressor\\src\\release\\java",
+                "C:\\workSpace\\DemoTest\\compressor\\src\\main\\java"
+            ]
+        },
+        "ecmap": {
+            "main_assets_directory": [
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\release\\assets",
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\assets"
+            ],
+            "main_jniLibs_directory": [
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\release\\jniLibs",
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\jniLibs"
+            ],
+            "main_jni_directory": [
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\release\\jni",
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\jni"
+            ],
+            "main_manifest_path": "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\AndroidManifest.xml",
+            "main_res_directory": [
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\release\\res",
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\res"
+            ],
+            "main_src_directory": [
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\release\\java",
+                "C:\\workSpace\\DemoTest\\ecmap\\src\\main\\java"
+            ]
+        },
+        "lib": {
+            "main_assets_directory": [
+                
+            ],
+            "main_jniLibs_directory": [
+                
+            ],
+            "main_jni_directory": [
+                
+            ],
+            "main_manifest_path": null,
+            "main_res_directory": [
+                
+            ],
+            "main_src_directory": [
+                "C:\\workSpace\\DemoTest\\lib\\src\\main\\java",
+                "C:\\workSpace\\DemoTest\\lib\\src\\main\\kotlin"
+            ]
+        }
+    },
+    "project_type": "gradle",
+    "retrolambda": {
+        
+    },
+    "root_dir": "C:\\workSpace\\DemoTest",
+    "sdk_directory": "C:\\devTools\\AndroidSdk",
+    "use_jdk8": true,
+    "use_system_gradle": false
+}
