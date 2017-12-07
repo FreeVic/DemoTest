@@ -57,8 +57,7 @@ public class RestartActivity extends BaseActivity {
         System.out.println("status height:" + statusBarHeight);
         interceptHyperLink(tvTest);
         System.out.println("buildConfigField="+BuildConfig.example);
-        System.out.println("testfreeline="+BuildConfig.example);
-//        System.out.println("testfreeline2="+BuildConfig.example);
+
     }
 
     /**
