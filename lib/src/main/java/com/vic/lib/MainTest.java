@@ -1,6 +1,7 @@
 package com.vic.lib;
 
 import com.vic.lib.test.BaseTest;
+import com.vic.lib.test.CryptTest;
 import com.vic.lib.test.KotLin;
 import com.vic.lib.utils.FileTypeUtil;
 
@@ -12,7 +13,7 @@ import java.util.Collections;
 public class MainTest {
 
     public static void main(String[] args) {
-        BaseTest test = new KotLin();
+        BaseTest test = new CryptTest();
         test.doTest();
         new MainTest().t7();
     }

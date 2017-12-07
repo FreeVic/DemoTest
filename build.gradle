@@ -28,9 +28,9 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext{
-    compileVersion  = 24
-    targetVersion = 24
+    compileVersion  = 26
+    targetVersion = 26
     minVersion = 15
-    buildVersion = "23.0.3"
+    buildVersion = "26.0.3"
 
 }
