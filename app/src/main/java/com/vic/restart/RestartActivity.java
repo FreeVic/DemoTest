@@ -1,6 +1,9 @@
 package com.vic.restart;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +22,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.daimajia.easing.Glider;
+import com.daimajia.easing.Skill;
 import com.eclite.map.SampleActivity;
 import com.github.lzyzsd.randomcolor.RandomColor;
 import com.vic.BuildConfig;
@@ -45,6 +50,10 @@ public class RestartActivity extends BaseActivity {
 
     private Button button;
     private TextView tvTest;
+    private TextView code;
+    private View parent;
+    private View laySecond;
+    private View layFirst;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +61,12 @@ public class RestartActivity extends BaseActivity {
         setContentView(R.layout.activity_restart);
         button = (Button) findViewById(R.id.button);
         tvTest = (TextView) findViewById(R.id.tvTest);
+        code = findViewById(R.id.code);
+        parent = findViewById(R.id.parent);
+        layFirst = findViewById(R.id.layFirst);
+        laySecond = findViewById(R.id.laySecond);
         button.setOnClickListener(this);
+        code.setOnClickListener(this);
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:" + statusBarHeight);
         interceptHyperLink(tvTest);
@@ -89,7 +103,7 @@ public class RestartActivity extends BaseActivity {
             tv.setText(spannableStringBuilder);
         }
     }
-
+    private int index = 0;
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -100,8 +114,93 @@ public class RestartActivity extends BaseActivity {
                 Random random = new Random();
                 ToastUtil.show(String.valueOf(random.nextInt(100)));
                 break;
+            case R.id.code:
+               if(index%2 == 0){
+                   fadeOut();
+               }else{
+                   fadeIn();
+               }
+               index++;
+                break;
         }
     }
+
+    private void fadeOut(){
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "translationX", 0, -1000)),
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "translationX", 1000,0)),
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "scaleX", 1,0)),
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "scaleY", 1,0))
+        );
+
+        set.addListener(new MyAnimatorListener(){
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                parent.setVisibility(View.GONE);
+            }
+        });
+        set.start();
+
+    }
+
+    private void fadeIn(){
+        parent.setVisibility(View.VISIBLE);
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(parent, "scaleX", 0,1)),
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(parent, "scaleY", 0,1))
+        );
+
+        set.addListener(new MyAnimatorListener(){
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+            }
+        });
+        set.start();
+    }
+
+    private void fadeGone(){
+        AnimatorSet setX = new AnimatorSet();
+        setX.playTogether(
+
+        );
+
+        setX.setDuration(1200);
+        setX.addListener(new MyAnimatorListener(){
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                super.onAnimationEnd(animation);
+                parent.setVisibility(View.GONE);
+            }
+        });
+        setX.start();
+    }
+
+    class MyAnimatorListener implements Animator.AnimatorListener{
+        @Override
+        public void onAnimationStart(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+
+        }
+
+        @Override
+        public void onAnimationRepeat(Animator animation) {
+
+        }
+    }
+
 
     class CustomUrlSpan extends ClickableSpan {
 

@@ -22,4 +22,70 @@
         android:text="https://www.baidu.com,www.csdn.net"
         android:textSize="20sp"/>
 
+    <TextView
+        android:id="@+id/code"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="27sp"
+        android:text="代码"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/parent"
+        android:descendantFocusability="blocksDescendants"
+        android:background="@color/grey400">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingTop="11dp"
+            android:paddingBottom="12dp"
+            android:id="@+id/layFirst"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/brown400">
+
+            <TextView
+                android:id="@+id/tvFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第一个布局"
+                android:textColor="@color/grey50"
+                android:layout_centerInParent="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/laySecond"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="11dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/orange400">
+
+            <TextView
+                android:id="@+id/tvSecond"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第二个布局"
+                android:textColor="@color/grey50"
+                android:layout_centerInParent="true"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
