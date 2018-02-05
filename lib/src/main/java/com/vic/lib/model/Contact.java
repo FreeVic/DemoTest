@@ -7,27 +7,31 @@ package com.vic.lib.model;
 public class Contact {
 
     /**
-     * f_call : 称呼1111
-     * f_classID : 0
-     * f_company :
-     * f_create_time : 2016-01-10 13:19:07
-     * f_crm_id : 297698748
-     * f_cs_guid : 0
-     * f_del : 0
-     * f_email :
-     * f_face :
-     * f_friend_id : 0
-     * f_gender : 1
-     * f_mobile :
-     * f_modify_time : 1452403147
-     * f_name : 新增1111
-     * f_phone :
-     * f_qq :
-     * f_qq_id : 0
-     * f_tagids :
-     * f_title : 测试1111
-     * f_type : 1
-     * f_user_id : 1791430
+     ""f_call": "",
+     "f_create_time": "2015-05-20 23:26:04",
+     "f_crm_id": "226326275",
+     "f_phone": "",
+     "f_mobile": "15817115880",
+     "f_modify_time": 1511750325,
+     "f_tmp_id": [1, 0, 0, 0, 0],
+     "f_title": "",
+     "f_qq": "",
+     "f_gender": "0",
+     "f_name": "\u5468\u52c7",
+     "f_user_id": "1011985",
+     "f_email": "",
+     "f_cs_guid": "0",
+     "f_step": "0",
+     "f_company_addr": "\u5e7f\u4e1c\u7701\u6df1\u5733\u5e02\u5357\u5c71\u533a\u6df1\u5357\u5927\u9053\u9760\u8fd1\u6df1\u5357\u6c99\u6cb3\u7acb\u4ea4",
+     "f_company": "",
+     "f_friend_id": "0",
+     "f_type": "16",
+     "f_classID": "0",
+     "f_tagids": "80454320",
+     "f_qq_id": 0,
+     "f_face": "",
+     "f_del": 0,
+     "f_lnglat": "113.9584180000|22.5404760000"
      */
 
     private String f_call;
@@ -51,6 +55,10 @@ public class Contact {
     private String f_title;
     private String f_type;
     private String f_user_id;
+    private String f_lnglat;
+    private String f_company_addr;
+    private String f_step;
+    private int[] f_tmp_id;
 
     public String getF_call() {
         return f_call;
@@ -218,5 +226,37 @@ public class Contact {
 
     public void setF_user_id(String f_user_id) {
         this.f_user_id = f_user_id;
+    }
+
+    public String getF_lnglat() {
+        return f_lnglat;
+    }
+
+    public void setF_lnglat(String f_lnglat) {
+        this.f_lnglat = f_lnglat;
+    }
+
+    public String getF_company_addr() {
+        return f_company_addr;
+    }
+
+    public void setF_company_addr(String f_company_addr) {
+        this.f_company_addr = f_company_addr;
+    }
+
+    public String getF_step() {
+        return f_step;
+    }
+
+    public void setF_step(String f_step) {
+        this.f_step = f_step;
+    }
+
+    public int[] getF_tmp_id() {
+        return f_tmp_id;
+    }
+
+    public void setF_tmp_id(int[] f_tmp_id) {
+        this.f_tmp_id = f_tmp_id;
     }
 }

@@ -79,6 +79,32 @@ class JsonTest : BaseTest() {
         file.writeBytes(contactList.toByteArray())
     }
 
+   /* "f_call": "",
+    "f_create_time": "2015-05-20 23:26:04",
+    "f_crm_id": "226326275",
+    "f_phone": "",
+    "f_mobile": "15817115880",
+    "f_modify_time": 1511750325,
+    "f_tmp_id": [1, 0, 0, 0, 0],
+    "f_title": "",
+    "f_qq": "",
+    "f_gender": "0",
+    "f_name": "\u5468\u52c7",
+    "f_user_id": "1011985",
+    "f_email": "",
+    "f_cs_guid": "0",
+    "f_step": "0",
+    "f_company_addr": "\u5e7f\u4e1c\u7701\u6df1\u5733\u5e02\u5357\u5c71\u533a\u6df1\u5357\u5927\u9053\u9760\u8fd1\u6df1\u5357\u6c99\u6cb3\u7acb\u4ea4",
+    "f_company": "",
+    "f_friend_id": "0",
+    "f_type": "16",
+    "f_classID": "0",
+    "f_tagids": "80454320",
+    "f_qq_id": 0,
+    "f_face": "",
+    "f_del": 0,
+    "f_lnglat": "113.9584180000|22.5404760000"*/
+
     fun getJson():Contact{
         var contact = Contact()
         contact.f_call = "称呼1111"
@@ -102,6 +128,14 @@ class JsonTest : BaseTest() {
         contact.f_title = "测试1111"
         contact.f_type ="1"
         contact.f_user_id = "1791430"
+        contact.f_lnglat = "113.9584180000|22.5404760000"
+        contact.f_company_addr = "广东深深圳市康佳研发大厦20楼哈哈哈"
+        contact.f_step = "2"
+        contact.f_tmp_id = intArrayOf(1, 0, 0, 0, 0)
+//        private var f_lnglat: String? = null
+//        private var f_company_addr: String? = null
+//        private var f_step: String? = null
+//        private var f_tmp_id: String? = null
         return contact
     }
 
@@ -128,6 +162,10 @@ class JsonTest : BaseTest() {
                 .setFTitle(contact.f_title)
                 .setFType(contact.f_type)
                 .setFUserId(contact.f_user_id)
+                .setFLnglat(contact.f_lnglat)
+                .setFCompanyAddr(contact.f_company_addr)
+                .setFStep(contact.f_step)
+                .addAllFTmpId(contact.f_tmp_id.toMutableList())
                 .build()
     }
 }

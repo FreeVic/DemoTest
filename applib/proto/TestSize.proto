@@ -31,4 +31,8 @@ message Contact
     optional string f_title = 19;
     optional string f_type = 20;
     optional string f_user_id = 21;
+    optional string f_lnglat = 22;
+    optional string f_company_addr = 23;
+    optional string f_step = 24;
+    repeated uint32  f_tmp_id = 25;
 }

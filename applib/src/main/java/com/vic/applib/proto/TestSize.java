@@ -1049,6 +1049,61 @@ public final class TestSize {
      */
     com.google.protobuf.ByteString
         getFUserIdBytes();
+
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    boolean hasFLnglat();
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    java.lang.String getFLnglat();
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    com.google.protobuf.ByteString
+        getFLnglatBytes();
+
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    boolean hasFCompanyAddr();
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    java.lang.String getFCompanyAddr();
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    com.google.protobuf.ByteString
+        getFCompanyAddrBytes();
+
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    boolean hasFStep();
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    java.lang.String getFStep();
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    com.google.protobuf.ByteString
+        getFStepBytes();
+
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    java.util.List<java.lang.Integer> getFTmpIdList();
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    int getFTmpIdCount();
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    int getFTmpId(int index);
   }
   /**
    * Protobuf type {@code Contact}
@@ -1083,6 +1138,10 @@ public final class TestSize {
       fTitle_ = "";
       fType_ = "";
       fUserId_ = "";
+      fLnglat_ = "";
+      fCompanyAddr_ = "";
+      fStep_ = "";
+      fTmpId_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -1236,6 +1295,45 @@ public final class TestSize {
               fUserId_ = bs;
               break;
             }
+            case 178: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00200000;
+              fLnglat_ = bs;
+              break;
+            }
+            case 186: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00400000;
+              fCompanyAddr_ = bs;
+              break;
+            }
+            case 194: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00800000;
+              fStep_ = bs;
+              break;
+            }
+            case 200: {
+              if (!((mutable_bitField0_ & 0x01000000) == 0x01000000)) {
+                fTmpId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x01000000;
+              }
+              fTmpId_.add(input.readUInt32());
+              break;
+            }
+            case 202: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x01000000) == 0x01000000) && input.getBytesUntilLimit() > 0) {
+                fTmpId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x01000000;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                fTmpId_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1244,6 +1342,9 @@ public final class TestSize {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x01000000) == 0x01000000)) {
+          fTmpId_ = java.util.Collections.unmodifiableList(fTmpId_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -2062,6 +2163,154 @@ public final class TestSize {
       }
     }
 
+    public static final int F_LNGLAT_FIELD_NUMBER = 22;
+    private volatile java.lang.Object fLnglat_;
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    public boolean hasFLnglat() {
+      return ((bitField0_ & 0x00200000) == 0x00200000);
+    }
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    public java.lang.String getFLnglat() {
+      java.lang.Object ref = fLnglat_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fLnglat_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string f_lnglat = 22;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFLnglatBytes() {
+      java.lang.Object ref = fLnglat_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fLnglat_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int F_COMPANY_ADDR_FIELD_NUMBER = 23;
+    private volatile java.lang.Object fCompanyAddr_;
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    public boolean hasFCompanyAddr() {
+      return ((bitField0_ & 0x00400000) == 0x00400000);
+    }
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    public java.lang.String getFCompanyAddr() {
+      java.lang.Object ref = fCompanyAddr_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fCompanyAddr_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string f_company_addr = 23;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFCompanyAddrBytes() {
+      java.lang.Object ref = fCompanyAddr_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fCompanyAddr_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int F_STEP_FIELD_NUMBER = 24;
+    private volatile java.lang.Object fStep_;
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    public boolean hasFStep() {
+      return ((bitField0_ & 0x00800000) == 0x00800000);
+    }
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    public java.lang.String getFStep() {
+      java.lang.Object ref = fStep_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          fStep_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string f_step = 24;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFStepBytes() {
+      java.lang.Object ref = fStep_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        fStep_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int F_TMP_ID_FIELD_NUMBER = 25;
+    private java.util.List<java.lang.Integer> fTmpId_;
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getFTmpIdList() {
+      return fTmpId_;
+    }
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    public int getFTmpIdCount() {
+      return fTmpId_.size();
+    }
+    /**
+     * <code>repeated uint32 f_tmp_id = 25;</code>
+     */
+    public int getFTmpId(int index) {
+      return fTmpId_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2137,6 +2386,18 @@ public final class TestSize {
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 21, fUserId_);
       }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 22, fLnglat_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 23, fCompanyAddr_);
+      }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 24, fStep_);
+      }
+      for (int i = 0; i < fTmpId_.size(); i++) {
+        output.writeUInt32(25, fTmpId_.get(i));
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2210,6 +2471,24 @@ public final class TestSize {
       }
       if (((bitField0_ & 0x00100000) == 0x00100000)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, fUserId_);
+      }
+      if (((bitField0_ & 0x00200000) == 0x00200000)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(22, fLnglat_);
+      }
+      if (((bitField0_ & 0x00400000) == 0x00400000)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(23, fCompanyAddr_);
+      }
+      if (((bitField0_ & 0x00800000) == 0x00800000)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(24, fStep_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < fTmpId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(fTmpId_.get(i));
+        }
+        size += dataSize;
+        size += 2 * getFTmpIdList().size();
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2333,6 +2612,23 @@ public final class TestSize {
         result = result && getFUserId()
             .equals(other.getFUserId());
       }
+      result = result && (hasFLnglat() == other.hasFLnglat());
+      if (hasFLnglat()) {
+        result = result && getFLnglat()
+            .equals(other.getFLnglat());
+      }
+      result = result && (hasFCompanyAddr() == other.hasFCompanyAddr());
+      if (hasFCompanyAddr()) {
+        result = result && getFCompanyAddr()
+            .equals(other.getFCompanyAddr());
+      }
+      result = result && (hasFStep() == other.hasFStep());
+      if (hasFStep()) {
+        result = result && getFStep()
+            .equals(other.getFStep());
+      }
+      result = result && getFTmpIdList()
+          .equals(other.getFTmpIdList());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2428,6 +2724,22 @@ public final class TestSize {
       if (hasFUserId()) {
         hash = (37 * hash) + F_USER_ID_FIELD_NUMBER;
         hash = (53 * hash) + getFUserId().hashCode();
+      }
+      if (hasFLnglat()) {
+        hash = (37 * hash) + F_LNGLAT_FIELD_NUMBER;
+        hash = (53 * hash) + getFLnglat().hashCode();
+      }
+      if (hasFCompanyAddr()) {
+        hash = (37 * hash) + F_COMPANY_ADDR_FIELD_NUMBER;
+        hash = (53 * hash) + getFCompanyAddr().hashCode();
+      }
+      if (hasFStep()) {
+        hash = (37 * hash) + F_STEP_FIELD_NUMBER;
+        hash = (53 * hash) + getFStep().hashCode();
+      }
+      if (getFTmpIdCount() > 0) {
+        hash = (37 * hash) + F_TMP_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getFTmpIdList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2589,6 +2901,14 @@ public final class TestSize {
         bitField0_ = (bitField0_ & ~0x00080000);
         fUserId_ = "";
         bitField0_ = (bitField0_ & ~0x00100000);
+        fLnglat_ = "";
+        bitField0_ = (bitField0_ & ~0x00200000);
+        fCompanyAddr_ = "";
+        bitField0_ = (bitField0_ & ~0x00400000);
+        fStep_ = "";
+        bitField0_ = (bitField0_ & ~0x00800000);
+        fTmpId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x01000000);
         return this;
       }
 
@@ -2697,6 +3017,23 @@ public final class TestSize {
           to_bitField0_ |= 0x00100000;
         }
         result.fUserId_ = fUserId_;
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00200000;
+        }
+        result.fLnglat_ = fLnglat_;
+        if (((from_bitField0_ & 0x00400000) == 0x00400000)) {
+          to_bitField0_ |= 0x00400000;
+        }
+        result.fCompanyAddr_ = fCompanyAddr_;
+        if (((from_bitField0_ & 0x00800000) == 0x00800000)) {
+          to_bitField0_ |= 0x00800000;
+        }
+        result.fStep_ = fStep_;
+        if (((bitField0_ & 0x01000000) == 0x01000000)) {
+          fTmpId_ = java.util.Collections.unmodifiableList(fTmpId_);
+          bitField0_ = (bitField0_ & ~0x01000000);
+        }
+        result.fTmpId_ = fTmpId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2836,6 +3173,31 @@ public final class TestSize {
         if (other.hasFUserId()) {
           bitField0_ |= 0x00100000;
           fUserId_ = other.fUserId_;
+          onChanged();
+        }
+        if (other.hasFLnglat()) {
+          bitField0_ |= 0x00200000;
+          fLnglat_ = other.fLnglat_;
+          onChanged();
+        }
+        if (other.hasFCompanyAddr()) {
+          bitField0_ |= 0x00400000;
+          fCompanyAddr_ = other.fCompanyAddr_;
+          onChanged();
+        }
+        if (other.hasFStep()) {
+          bitField0_ |= 0x00800000;
+          fStep_ = other.fStep_;
+          onChanged();
+        }
+        if (!other.fTmpId_.isEmpty()) {
+          if (fTmpId_.isEmpty()) {
+            fTmpId_ = other.fTmpId_;
+            bitField0_ = (bitField0_ & ~0x01000000);
+          } else {
+            ensureFTmpIdIsMutable();
+            fTmpId_.addAll(other.fTmpId_);
+          }
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -4329,6 +4691,300 @@ public final class TestSize {
         onChanged();
         return this;
       }
+
+      private java.lang.Object fLnglat_ = "";
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public boolean hasFLnglat() {
+        return ((bitField0_ & 0x00200000) == 0x00200000);
+      }
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public java.lang.String getFLnglat() {
+        java.lang.Object ref = fLnglat_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            fLnglat_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFLnglatBytes() {
+        java.lang.Object ref = fLnglat_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fLnglat_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public Builder setFLnglat(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00200000;
+        fLnglat_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public Builder clearFLnglat() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        fLnglat_ = getDefaultInstance().getFLnglat();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_lnglat = 22;</code>
+       */
+      public Builder setFLnglatBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00200000;
+        fLnglat_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object fCompanyAddr_ = "";
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public boolean hasFCompanyAddr() {
+        return ((bitField0_ & 0x00400000) == 0x00400000);
+      }
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public java.lang.String getFCompanyAddr() {
+        java.lang.Object ref = fCompanyAddr_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            fCompanyAddr_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFCompanyAddrBytes() {
+        java.lang.Object ref = fCompanyAddr_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fCompanyAddr_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public Builder setFCompanyAddr(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00400000;
+        fCompanyAddr_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public Builder clearFCompanyAddr() {
+        bitField0_ = (bitField0_ & ~0x00400000);
+        fCompanyAddr_ = getDefaultInstance().getFCompanyAddr();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_company_addr = 23;</code>
+       */
+      public Builder setFCompanyAddrBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00400000;
+        fCompanyAddr_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object fStep_ = "";
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public boolean hasFStep() {
+        return ((bitField0_ & 0x00800000) == 0x00800000);
+      }
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public java.lang.String getFStep() {
+        java.lang.Object ref = fStep_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            fStep_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public com.google.protobuf.ByteString
+          getFStepBytes() {
+        java.lang.Object ref = fStep_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          fStep_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public Builder setFStep(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00800000;
+        fStep_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public Builder clearFStep() {
+        bitField0_ = (bitField0_ & ~0x00800000);
+        fStep_ = getDefaultInstance().getFStep();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string f_step = 24;</code>
+       */
+      public Builder setFStepBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00800000;
+        fStep_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<java.lang.Integer> fTmpId_ = java.util.Collections.emptyList();
+      private void ensureFTmpIdIsMutable() {
+        if (!((bitField0_ & 0x01000000) == 0x01000000)) {
+          fTmpId_ = new java.util.ArrayList<java.lang.Integer>(fTmpId_);
+          bitField0_ |= 0x01000000;
+         }
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getFTmpIdList() {
+        return java.util.Collections.unmodifiableList(fTmpId_);
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public int getFTmpIdCount() {
+        return fTmpId_.size();
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public int getFTmpId(int index) {
+        return fTmpId_.get(index);
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public Builder setFTmpId(
+          int index, int value) {
+        ensureFTmpIdIsMutable();
+        fTmpId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public Builder addFTmpId(int value) {
+        ensureFTmpIdIsMutable();
+        fTmpId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public Builder addAllFTmpId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureFTmpIdIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, fTmpId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 f_tmp_id = 25;</code>
+       */
+      public Builder clearFTmpId() {
+        fTmpId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x01000000);
+        onChanged();
+        return this;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return super.setUnknownFields(unknownFields);
@@ -4398,7 +5054,7 @@ public final class TestSize {
   static {
     java.lang.String[] descriptorData = {
       "\n\016TestSize.proto\"%\n\013ContactList\022\026\n\004list\030" +
-      "\001 \003(\0132\010.Contact\"\201\003\n\007Contact\022\016\n\006f_call\030\001 " +
+      "\001 \003(\0132\010.Contact\"\315\003\n\007Contact\022\016\n\006f_call\030\001 " +
       "\001(\t\022\021\n\tf_classID\030\002 \001(\t\022\021\n\tf_company\030\003 \001(" +
       "\t\022\025\n\rf_create_time\030\004 \001(\t\022\020\n\010f_crm_id\030\005 \001" +
       "(\t\022\021\n\tf_cs_guid\030\006 \001(\t\022\r\n\005f_del\030\007 \001(\r\022\017\n\007" +
@@ -4408,7 +5064,9 @@ public final class TestSize {
       "\016 \001(\t\022\017\n\007f_phone\030\017 \001(\t\022\014\n\004f_qq\030\020 \001(\t\022\017\n\007" +
       "f_qq_id\030\021 \001(\r\022\020\n\010f_tagids\030\022 \001(\t\022\017\n\007f_tit",
       "le\030\023 \001(\t\022\016\n\006f_type\030\024 \001(\t\022\021\n\tf_user_id\030\025 " +
-      "\001(\tB \n\024com.vic.applib.protoB\010TestSize"
+      "\001(\t\022\020\n\010f_lnglat\030\026 \001(\t\022\026\n\016f_company_addr\030" +
+      "\027 \001(\t\022\016\n\006f_step\030\030 \001(\t\022\020\n\010f_tmp_id\030\031 \003(\rB" +
+      " \n\024com.vic.applib.protoB\010TestSize"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4433,7 +5091,7 @@ public final class TestSize {
     internal_static_Contact_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Contact_descriptor,
-        new java.lang.String[] { "FCall", "FClassID", "FCompany", "FCreateTime", "FCrmId", "FCsGuid", "FDel", "FEmail", "FFace", "FFriendId", "FGender", "FMobile", "FModifyTime", "FName", "FPhone", "FQq", "FQqId", "FTagids", "FTitle", "FType", "FUserId", });
+        new java.lang.String[] { "FCall", "FClassID", "FCompany", "FCreateTime", "FCrmId", "FCsGuid", "FDel", "FEmail", "FFace", "FFriendId", "FGender", "FMobile", "FModifyTime", "FName", "FPhone", "FQq", "FQqId", "FTagids", "FTitle", "FType", "FUserId", "FLnglat", "FCompanyAddr", "FStep", "FTmpId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
