@@ -62,5 +62,6 @@ dependencies {
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     compile project(':ecmap')
     compile 'com.daimajia.easing:library:2.1@aar' // 动画
+    compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
 
 }

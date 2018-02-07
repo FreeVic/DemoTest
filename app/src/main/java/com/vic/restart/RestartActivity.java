@@ -26,6 +26,9 @@ import com.daimajia.easing.Glider;
 import com.daimajia.easing.Skill;
 import com.eclite.map.SampleActivity;
 import com.github.lzyzsd.randomcolor.RandomColor;
+import com.jzxiang.pickerview.TimePickerDialog;
+import com.jzxiang.pickerview.data.Type;
+import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.vic.BuildConfig;
 import com.vic.R;
 import com.vic.applib.GlobalApplication;
@@ -45,15 +48,19 @@ import timber.log.Timber;
 /**
  * Created by Vic on 2016/6/27 0027.
  */
-public class RestartActivity extends BaseActivity {
+public class RestartActivity extends BaseActivity implements OnDateSetListener {
 
 
     private Button button;
     private TextView tvTest;
-    private TextView code;
+    private TextView first;
     private View parent;
     private View laySecond;
     private View layFirst;
+    private View second;
+    boolean isFirstShow = false;
+    boolean isSecondShow = false;
+    int screenWidth = UIUtil.getScreenSize()[0];
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,12 +68,14 @@ public class RestartActivity extends BaseActivity {
         setContentView(R.layout.activity_restart);
         button = (Button) findViewById(R.id.button);
         tvTest = (TextView) findViewById(R.id.tvTest);
-        code = findViewById(R.id.code);
+        first = findViewById(R.id.first);
+        second = findViewById(R.id.second);
         parent = findViewById(R.id.parent);
         layFirst = findViewById(R.id.layFirst);
         laySecond = findViewById(R.id.laySecond);
         button.setOnClickListener(this);
-        code.setOnClickListener(this);
+        first.setOnClickListener(this);
+        second.setOnClickListener(this);
         int statusBarHeight = UIUtil.getStatusBarHeight();
         System.out.println("status height:" + statusBarHeight);
         interceptHyperLink(tvTest);
@@ -113,46 +122,138 @@ public class RestartActivity extends BaseActivity {
                 shapeDrawable.setColor(randomColor.randomColor());
                 Random random = new Random();
                 ToastUtil.show(String.valueOf(random.nextInt(100)));
+                showPicker();
                 break;
-            case R.id.code:
-               if(index%2 == 0){
-                   fadeOut();
-               }else{
-                   fadeIn();
-               }
-               index++;
+            case R.id.first:
+                isFirstShow  = !isFirstShow;
+                disPlayFirst();
+                break;
+            case R.id.second:
+                isSecondShow = !isSecondShow;
+                disPlaySecond();
                 break;
         }
+    }
+    TimePickerDialog mDialogAll;
+    void showPicker(){
+        long hundredYears = 1000L*60*60*24*365*100L;
+        if(mDialogAll == null){
+            System.out.println("时间选择控件初始化开始");
+            mDialogAll = new TimePickerDialog.Builder()
+                    .setCallBack(RestartActivity.this)
+                    .setCancelStringId("Cancel")
+                    .setSureStringId("Sure")
+                    .setTitleStringId("TimePicker")
+                    .setYearText("Year")
+                    .setMonthText("Month")
+                    .setDayText("Day")
+                    .setHourText("Hour")
+                    .setMinuteText("Minute")
+                    .setCyclic(false)
+                    .setMinMillseconds(System.currentTimeMillis()-hundredYears)
+                    .setMaxMillseconds(System.currentTimeMillis() + hundredYears)
+                    .setCurrentMillseconds(System.currentTimeMillis())
+                    .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
+                    .setType(Type.ALL)
+                    .setWheelItemTextNormalColor(getResources().getColor(R.color.timetimepicker_default_text_color))
+                    .setWheelItemTextSelectorColor(getResources().getColor(R.color.timepicker_toolbar_bg))
+                    .setWheelItemTextSize(12)
+                    .build();
+        }
+        System.out.println("时间选择控件初始化成功");
+        mDialogAll.show(getSupportFragmentManager(),"all");
+
+    }
+
+    private void disPlayFirst() {
+        if(isSecondShow){
+
+        }else{
+            if(isFirstShow){
+                parent.setVisibility(View.VISIBLE);
+                layFirst.setVisibility(View.VISIBLE);
+                fadeInFirst();
+            }else{
+                fadeOutFirst(new MyAnimatorListener(){
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        parent.setVisibility(View.GONE);
+                        layFirst.setVisibility(View.GONE);
+                    }
+            });
+        }
+    }
+    }
+
+    private void fadeOutFirst(MyAnimatorListener listener) {
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(layFirst, "translationX", 0,-screenWidth/2))
+        );
+        set.addListener(listener);
+        set.start();
+    }
+
+    private void fadeInFirst() {
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(layFirst, "translationX", -screenWidth/2,0))
+        );
+        set.start();
+    }
+
+    private void disPlaySecond(){
+        if(isSecondShow){
+            laySecond.setVisibility(View.VISIBLE);
+            fadeInSecond();
+        }else{
+            fadeOutSecond(new MyAnimatorListener(){
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    laySecond.setVisibility(View.GONE);
+                }
+            });
+        }
+    }
+
+    private void fadeOutSecond(MyAnimatorListener listener) {
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(laySecond, "translationX", 0,screenWidth/2))
+        );
+        set.addListener(listener);
+        set.start();
+    }
+
+    private void fadeInSecond() {
+        AnimatorSet set = new AnimatorSet();
+        set.playSequentially(
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(laySecond, "translationX", screenWidth/2,0))
+        );
+        set.start();
     }
 
     private void fadeOut(){
         AnimatorSet set = new AnimatorSet();
-        set.playSequentially(
-                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "translationX", 0, -1000)),
-                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "translationX", 1000,0)),
-                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "scaleX", 1,0)),
-                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "scaleY", 1,0))
+        set.playTogether(
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "rotationX", 90, -15, 15, 0)),
+                Glider.glide(Skill.Linear, 1200, ObjectAnimator.ofFloat(parent, "alpha", 0.25f, 0.5f, 0.75f, 1))
         );
-
-        set.addListener(new MyAnimatorListener(){
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                super.onAnimationEnd(animation);
-                parent.setVisibility(View.GONE);
-            }
-        });
+        set.setDuration(1200);
         set.start();
 
     }
 
     private void fadeIn(){
-        parent.setVisibility(View.VISIBLE);
+        if(parent.getVisibility() == View.GONE){
+
+        }
         AnimatorSet set = new AnimatorSet();
         set.playSequentially(
-                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(parent, "scaleX", 0,1)),
-                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(parent, "scaleY", 0,1))
+                Glider.glide(Skill.Linear, 2200, ObjectAnimator.ofFloat(parent, "translationX", -screenWidth/2,0))
         );
-
         set.addListener(new MyAnimatorListener(){
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -177,6 +278,11 @@ public class RestartActivity extends BaseActivity {
             }
         });
         setX.start();
+    }
+
+    @Override
+    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+        System.out.println("时间选择控件选择了时间："+millseconds);
     }
 
     class MyAnimatorListener implements Animator.AnimatorListener{

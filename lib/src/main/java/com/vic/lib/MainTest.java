@@ -1,8 +1,7 @@
 package com.vic.lib;
 
 import com.vic.lib.test.BaseTest;
-import com.vic.lib.test.CryptTest;
-import com.vic.lib.test.KotLin;
+import com.vic.lib.test.ConvertTest;
 import com.vic.lib.utils.FileTypeUtil;
 
 import java.io.File;
@@ -13,9 +12,9 @@ import java.util.Collections;
 public class MainTest {
 
     public static void main(String[] args) {
-        BaseTest test = new CryptTest();
+        BaseTest test = new ConvertTest();
         test.doTest();
-        new MainTest().t7();
+//        new MainTest().t7();
     }
 
     public void loopFile(File file) {

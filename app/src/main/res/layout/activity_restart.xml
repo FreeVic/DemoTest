@@ -3,8 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
->
+    >
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
@@ -23,13 +24,22 @@
         android:textSize="20sp"/>
 
     <TextView
-        android:id="@+id/code"
+        android:id="@+id/first"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="27sp"
-        android:text="代码"/>
+        android:text="一"/>
+
+    <TextView
+        android:id="@+id/second"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="27sp"
+        android:text="二"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -37,8 +47,10 @@
         android:clickable="true"
         android:layout_marginTop="20dp"
         android:id="@+id/parent"
+        android:visibility="gone"
+        tools:visibility="visible"
         android:descendantFocusability="blocksDescendants"
-        android:background="@color/grey400">
+        android:background="@color/lightgreen600">
 
 
         <LinearLayout
@@ -51,6 +63,8 @@
             android:id="@+id/layFirst"
             android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:background="@color/brown400">
 
             <TextView
@@ -74,6 +88,8 @@
             android:paddingBottom="12dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
+            android:visibility="gone"
+            tools:visibility="visible"
             android:background="@color/orange400">
 
             <TextView
