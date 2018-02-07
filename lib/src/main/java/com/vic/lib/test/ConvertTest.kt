@@ -7,7 +7,7 @@ import com.vic.lib.utils.ConvertEncodingUtil
  */
 class ConvertTest: BaseTest() {
     override fun doSubTest() {
-        val convert = ConvertEncodingUtil("C:\\Users\\eruser\\Desktop\\MNote", "C:\\Users\\eruser\\Desktop\\LNote")
+        val convert = ConvertEncodingUtil("C:\\Users\\eruser\\Desktop\\PersonMoney4Android01", "C:\\Users\\eruser\\Desktop\\LNote")
         convert.convert()
     }
 }

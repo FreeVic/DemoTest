@@ -54,6 +54,9 @@ class ConvertEncodingUtil(var inputPath:String,var outputPath:String) {
             try {
                 val input = File(inputPath)
                 val output = File(modifiedPath)
+                if(!output.parentFile.exists())
+                    output.parentFile.mkdirs()
+
                 if(!input.exists())
                     return
                 reader = input.bufferedReader(charset("GBK"))
