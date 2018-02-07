@@ -1,16 +1,20 @@
 package com.vic.lib.utils
 
-import java.io.*
+import java.io.BufferedReader
+import java.io.BufferedWriter
+import java.io.File
 
 /**
  * Created by eruser on 2018/2/7.
  */
 class ConvertEncodingUtil(var inputPath:String,var outputPath:String) {
+    var baseInput:String?=null
+    var baseOutput:String?=null
     init {
         var inputFile = File(inputPath)
         if(inputFile.exists()){
-            var baseInput = inputFile.parent
-            var baseOutput = outputPath+inputFile.name
+            baseInput = inputPath
+            baseOutput = outputPath+File.separator+inputFile.name
         }
 
     }
@@ -44,21 +48,25 @@ class ConvertEncodingUtil(var inputPath:String,var outputPath:String) {
     private fun convertFileGBK2UTF8(inputPath: String, outputPath: String) {
         var reader:BufferedReader? = null
         var writer:BufferedWriter? = null
-        try {
-            val input = File(inputPath)
-            val output = File(outputPath)
-            if(!input.exists())
-                return
-            reader = input.bufferedReader(charset("GBK"))
-            writer = output.bufferedWriter(Charsets.UTF_8)
-            reader.use {readstr-> writer.use {it?.write(readstr?.readText()) } }
-        }catch (e:Exception){
+        if(baseInput!=null && baseOutput!=null){
+            var modifiedPath = inputPath.replace(baseInput!!,baseOutput!!)
+            println("modifiedPath  $modifiedPath")
+            try {
+                val input = File(inputPath)
+                val output = File(modifiedPath)
+                if(!input.exists())
+                    return
+                reader = input.bufferedReader(charset("GBK"))
+                writer = output.bufferedWriter(Charsets.UTF_8)
+                reader.use {readstr-> writer.use {it?.write(readstr?.readText()) } }
+            }catch (e:Exception){
 
-        }finally {
-            reader?.close()
-            reader = null
-            writer?.close()
-            writer = null
+            }finally {
+                reader?.close()
+                reader = null
+                writer?.close()
+                writer = null
+            }
         }
 
     }
