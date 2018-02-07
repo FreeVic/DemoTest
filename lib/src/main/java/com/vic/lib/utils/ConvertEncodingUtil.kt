@@ -34,12 +34,6 @@ class ConvertEncodingUtil(var inputPath:String,var outputPath:String) {
                 convertGBK2UTF8(it.path,outputPath)
             }
         }else{
-            println("input.canonicalPath  ${input.canonicalPath}")
-            println("input.absolutePath  ${input.absolutePath}")
-            println("input.name  ${input.name}")
-            println("input.path  ${input.path}")
-            println("input.parent  ${input.parent}")
-
             convertFileGBK2UTF8(inputPath,outputPath)
         }
 
